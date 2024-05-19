@@ -1,0 +1,9 @@
+qpims\UserController.class
+module-info.class
+qpims\PropertyController.class
+qpims\MainController.class
+qpims\QProperty.class
+qpims\CustomerController.class
+qpims\ManagerReportController.class
+qpims\RepairJobController.class
+qpims\LoginController.class

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qpims.MainController">
+   <top>
+      <HBox prefHeight="50.0" prefWidth="1000.0" BorderPane.alignment="CENTER_RIGHT">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <Button mnemonicParsing="false" onAction="#LogOut" prefHeight="50.0" prefWidth="80.0" text="Exit" />
+         </children>
+         <padding>
+            <Insets right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+   </top>
+   <left>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="TOP_CENTER" prefWidth="194.0">
+               <children>
+                  <HBox alignment="TOP_CENTER" prefHeight="72.0" prefWidth="194.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="QProperty">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <Button fx:id="btnCustomer" mnemonicParsing="false" onAction="#gotoCustomerView" prefHeight="50.0" prefWidth="200.0" text="Customer">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnProperty" mnemonicParsing="false" onAction="#gotoPropertyView" prefHeight="50.0" prefWidth="200.0" text="Property">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnRepairJob" mnemonicParsing="false" onAction="#gotoRepairJobView" prefHeight="50.0" prefWidth="200.0" text="Repair Job">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnManagerReport" mnemonicParsing="false" onAction="#gotoManagerReportView" prefHeight="50.0" prefWidth="200.0" text="Manager Report">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+         </children>
+      </HBox>
+   </left>
+   <padding>
+      <Insets bottom="10.0" />
+   </padding>
+</BorderPane>
