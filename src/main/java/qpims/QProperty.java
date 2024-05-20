@@ -5,8 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import qpims.model.QPropertyDAO;
 
 import java.io.IOException;
+import qpims.model.DatabaseConnection;
 
 /**
  * JavaFX QProperty
@@ -14,17 +16,17 @@ import java.io.IOException;
 public class QProperty extends Application {
 
     private static Scene scene;
-
+    
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("login"), 1000, 600);
+        scene = new Scene(loadFXML("view/login"), 1000, 600);
         stage.setScene(scene);
         stage.setTitle("QProperty Information Management System");
         stage.setResizable(false);
         stage.show();
     }
 
-    static void setRoot(String fxml) throws IOException {
+    public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 
