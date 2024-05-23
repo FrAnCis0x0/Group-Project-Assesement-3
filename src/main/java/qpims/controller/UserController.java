@@ -10,15 +10,21 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 import qpims.QProperty;
 
-/**
- * FXML Controller class
- *
- * @author renza
- */
 public class UserController implements Initializable {
-
+    @FXML
+    private TextField tfFirstName;
+    @FXML
+    private TextField tfLastName;
+    @FXML
+    private TextField tfEmail;
+    @FXML
+    private TextField tfPassword;
+    @FXML
+    private TextField tfUsername;
+    
     /**
      * Initializes the controller class.
      */
@@ -29,7 +35,13 @@ public class UserController implements Initializable {
 
     @FXML
     private void goToLoginView(ActionEvent event) throws IOException {
-        QProperty.setRoot("login");
+        QProperty.setRoot("view/login");
     }
+    
+    @FXML
+    private void createUser(){}
+    
+    @FXML
+    private void clear(){}
     
 }

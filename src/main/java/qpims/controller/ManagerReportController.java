@@ -6,15 +6,16 @@ package qpims.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.BarChart;
 
-/**
- * FXML Controller class
- *
- * @author renza
- */
 public class ManagerReportController implements Initializable {
-
+    @FXML
+    private BarChart<?,?> bcRepairJobs;
+    @FXML
+    private BarChart<?,?> bcCompletedJobs;
+    
     /**
      * Initializes the controller class.
      */

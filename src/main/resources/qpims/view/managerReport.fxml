@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -11,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="560.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qpims.controller.ManagerReportController">
+<AnchorPane id="AnchorPane" prefHeight="560.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qpims.controller.ManagerReportController">
  
    <children>
       <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -24,7 +23,7 @@
             <Pane prefHeight="29.0" prefWidth="800.0" />
             <HBox alignment="CENTER" prefHeight="227.0" prefWidth="800.0">
                <children>
-                  <BarChart prefHeight="177.0" prefWidth="728.0" title="Distribution of Completed Jobs">
+                  <BarChart fx:id="bcCompletedJobs" prefHeight="177.0" prefWidth="728.0" title="Distribution of Completed Jobs">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
@@ -36,7 +35,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="235.0" prefWidth="800.0">
                <children>
-                  <BarChart prefHeight="177.0" prefWidth="728.0" title="Charges for Repair Jobs ">
+                  <BarChart fx:id="bcRepairJobs" prefHeight="177.0" prefWidth="728.0" title="Charges for Repair Jobs ">
                      <xAxis>
                         <CategoryAxis side="BOTTOM" />
                      </xAxis>

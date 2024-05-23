@@ -24,25 +24,25 @@ public class BookingModel implements IBooking {
         
         try {
             //create query that selects all entires from Booking table
-            selectAllBookings = connection.prepareStatement("SELECT * FROM Booking");
+            selectAllBookings = connection.prepareStatement("SELECT * FROM booking");
             
             //create query that selects all entires from Booking table by address
-            selectBookingByAddress = connection.prepareStatement("SELECT * FROM Booking WHERE propertyId = ?");
+            selectBookingByAddress = connection.prepareStatement("SELECT * FROM booking WHERE property_id = ?");
             
             //create query that selects all charges from Booking table
-            selectAllBookingCharges = connection.prepareStatement("SELECT charge FROM Booking");
+            selectAllBookingCharges = connection.prepareStatement("SELECT charge FROM booking");
             
             //create query that inserts new entry into Booking table
-            insertBooking = connection.prepareStatement("INSERT INTO Booking (propertyId, description, bookingDate, completionDate, charge, staffName, jobType) VALUES (?,?,?,?,?,?,?)");
+            insertBooking = connection.prepareStatement("INSERT INTO booking (property_id, description, booking_date, completion_date, charge, staff_name, job_type) VALUES (?,?,?,?,?,?,?)");
             
             //create query that selects all completed entries from Booking table by job type
-            selectAllCompletedBookingByType = connection.prepareStatement("SELECT * FROM Booking WHERE jobType = ? AND completionDate IS NOT NULL");
+            selectAllCompletedBookingByType = connection.prepareStatement("SELECT * FROM booking WHERE job_type = ? AND completion_date IS NOT NULL");
             
             //create query that deletes entry from Booking table by jobId
-            deleteBookingById = connection.prepareStatement("DELETE FROM Booking WHERE jobId = ?");
+            deleteBookingById = connection.prepareStatement("DELETE FROM booking WHERE job_id = ?");
             
             //create query that updates entry in Booking table by jobId
-            updateBooking = connection.prepareStatement("UPDATE Booking SET propertyId = ?, description = ?, bookingDate = ?, completionDate = ?, charge = ?, staffName = ?, jobType = ? WHERE jobId = ?");
+            updateBooking = connection.prepareStatement("UPDATE booking SET property_id = ?, description = ?, booking_date = ?, completion_date = ?, charge = ?, staff_name = ?, job_type = ? WHERE job_id = ?");
         } catch (SQLException ex) {
             Logger.getLogger(BookingModel.class.getName()).log(Level.SEVERE, "Database does not exist!!", ex);
         }
@@ -50,7 +50,7 @@ public class BookingModel implements IBooking {
     
     
     @Override
-    public void addBooking(int propertyId, String description, String bookingDate, String completionDate, double charge, String staffName, String jobType) {
+    public void addBooking(int propertyId, String description, String bookingDate, String completionDate, double charge, String staffName, JobType jobType) {
         
         try {
             //insert new entry into Booking table
@@ -60,7 +60,7 @@ public class BookingModel implements IBooking {
             insertBooking.setString(4, completionDate);
             insertBooking.setDouble(5, charge);
             insertBooking.setString(6, staffName);
-            insertBooking.setString(7, jobType);
+            insertBooking.setString(7, jobType.toMySQLName());
             
             //execute query
             insertBooking.executeUpdate();
@@ -80,14 +80,14 @@ public class BookingModel implements IBooking {
             //loop through result set and add each entry to list
             while (resultSet.next()) {
                 Booking booking = new Booking();
-                booking.setJobId(resultSet.getInt("jobId"));
-                booking.setPropertyId(resultSet.getInt("propertyId"));
+                booking.setJobId(resultSet.getInt("job_id"));
+                booking.setPropertyId(resultSet.getInt("property_id"));
                 booking.setDescription(resultSet.getString("description"));
-                booking.setBookingDate(resultSet.getDate("bookingDate").toLocalDate());
-                booking.setCompletionDate(resultSet.getDate("completionDate").toLocalDate());
+                booking.setBookingDate(resultSet.getDate("booking_date").toLocalDate());
+                booking.setCompletionDate(resultSet.getDate("completion_date").toLocalDate());
                 booking.setCharge(resultSet.getDouble("charge"));
-                booking.setStaffName(resultSet.getString("staffName"));
-                booking.setJobType(resultSet.getString("jobType"));
+                booking.setStaffName(resultSet.getString("staff_name"));
+                booking.setJobType(JobType.fromMySQLName(resultSet.getString("job_type")));
                 bookings.add(booking);
             }
             return bookings;
@@ -107,14 +107,14 @@ public class BookingModel implements IBooking {
             //loop through result set and add each entry to list
             while (resultSet.next()) {
                 Booking booking = new Booking();
-                booking.setJobId(resultSet.getInt("jobId"));
-                booking.setPropertyId(resultSet.getInt("propertyId"));
+                booking.setJobId(resultSet.getInt("job_id"));
+                booking.setPropertyId(resultSet.getInt("property_id"));
                 booking.setDescription(resultSet.getString("description"));
-                booking.setBookingDate(resultSet.getDate("bookingDate").toLocalDate());
-                booking.setCompletionDate(resultSet.getDate("completionDate").toLocalDate());
+                booking.setBookingDate(resultSet.getDate("booking_date").toLocalDate());
+                booking.setCompletionDate(resultSet.getDate("completion_date").toLocalDate());
                 booking.setCharge(resultSet.getDouble("charge"));
-                booking.setStaffName(resultSet.getString("staffName"));
-                booking.setJobType(resultSet.getString("jobType"));
+                booking.setStaffName(resultSet.getString("staff_name"));
+                booking.setJobType(JobType.fromMySQLName(resultSet.getString("job_type")));
                 bookings.add(booking);
             }
             return bookings;
@@ -144,23 +144,23 @@ public class BookingModel implements IBooking {
     }
 
     @Override
-    public List<Booking> getAllCompletedBookingsByType(String jobType) {
+    public List<Booking> getAllCompletedBookingsByType(JobType jobType) {
         try {
-            selectAllCompletedBookingByType.setString(1, jobType);
+            selectAllCompletedBookingByType.setString(1, jobType.toMySQLName());
             ResultSet resultSet = selectAllCompletedBookingByType.executeQuery();
             ArrayList bookings = new ArrayList<Booking>();
             
             //loop through result set and add each entry to list
             while (resultSet.next()) {
                 Booking booking = new Booking();
-                booking.setJobId(resultSet.getInt("jobId"));
-                booking.setPropertyId(resultSet.getInt("propertyId"));
+                booking.setJobId(resultSet.getInt("job_id"));
+                booking.setPropertyId(resultSet.getInt("property_id"));
                 booking.setDescription(resultSet.getString("description"));
-                booking.setBookingDate(resultSet.getDate("bookingDate").toLocalDate());
-                booking.setCompletionDate(resultSet.getDate("completionDate").toLocalDate());
+                booking.setBookingDate(resultSet.getDate("booking_date").toLocalDate());
+                booking.setCompletionDate(resultSet.getDate("completion_date").toLocalDate());
                 booking.setCharge(resultSet.getDouble("charge"));
-                booking.setStaffName(resultSet.getString("staffName"));
-                booking.setJobType(resultSet.getString("jobType"));
+                booking.setStaffName(resultSet.getString("staff_name"));
+                booking.setJobType(JobType.fromMySQLName(resultSet.getString("job_type")));
                 bookings.add(booking);
             }
             
@@ -183,15 +183,15 @@ public class BookingModel implements IBooking {
     }
 
     @Override
-    public void updateBooking(int jobId, int propertyId, String desciption, String bookingDate, String completionDate, double charge, String staffName, String jobType) {
+    public void updateBooking(int jobId, int propertyId, String description, String bookingDate, String completionDate, double charge, String staffName, JobType jobType) {
         try {
             updateBooking.setInt(1, propertyId);
-            updateBooking.setString(2, desciption);
+            updateBooking.setString(2, description);
             updateBooking.setString(3, bookingDate);
             updateBooking.setString(4, completionDate);
             updateBooking.setDouble(5, charge);
             updateBooking.setString(6, staffName);
-            updateBooking.setString(7, jobType);
+            updateBooking.setString(7, jobType.toMySQLName());
             updateBooking.setInt(8, jobId);
             updateBooking.executeUpdate();
             

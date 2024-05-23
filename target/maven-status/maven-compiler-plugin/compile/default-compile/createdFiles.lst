@@ -1,4 +1,5 @@
 qpims\controller\UserController.class
+qpims\model\JobType.class
 qpims\model\BookingModel.class
 qpims\model\Customer.class
 qpims\controller\BookingController.class
@@ -19,5 +20,6 @@ qpims\model\Property.class
 qpims\controller\MainController.class
 qpims\model\IBooking.class
 qpims\controller\ManagerReportController.class
+qpims\model\PropertyType.class
 qpims\model\IUser.class
 qpims\model\CustomerModel.class

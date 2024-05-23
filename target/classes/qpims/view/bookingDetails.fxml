@@ -13,11 +13,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qpims.controller.BookingController">
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qpims.controller.BookingController">
    <center>
       <VBox alignment="CENTER" prefHeight="560.0" prefWidth="800.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Repair Job Details">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Booking Details">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -36,7 +36,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Text>
-                                    <TextField alignment="CENTER" prefHeight="38.0" prefWidth="228.0" promptText="name" />
+                                    <TextField fx:id="tfStaffName" alignment="CENTER" prefHeight="38.0" prefWidth="228.0" promptText="name" />
                                  </children>
                               </VBox>
                            </children>
@@ -50,7 +50,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Text>
-                                    <TextField alignment="CENTER" prefHeight="38.0" prefWidth="228.0" promptText="\$$" />
+                                    <TextField fx:id="tfCharge" alignment="CENTER" prefHeight="38.0" prefWidth="228.0" promptText="\$$" />
                                  </children>
                               </VBox>
                            </children>
@@ -73,7 +73,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Text>
-                                    <DatePicker prefHeight="38.0" prefWidth="228.0" promptText="Select Date" />
+                                    <DatePicker fx:id="dpBookingDate" prefHeight="38.0" prefWidth="228.0" promptText="Select Date" />
                                  </children>
                               </VBox>
                            </children>
@@ -87,7 +87,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Text>
-                                    <DatePicker prefHeight="38.0" prefWidth="228.0" promptText="Select Date" />
+                                    <DatePicker fx:id="dpCompletionDate" prefHeight="38.0" prefWidth="228.0" promptText="Select Date" />
                                  </children>
                               </VBox>
                            </children>
@@ -154,7 +154,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Text>
-                                    <TextArea prefHeight="83.0" prefWidth="468.0" promptText="description" />
+                                    <TextArea fx:id="taDescription" prefHeight="83.0" prefWidth="468.0" promptText="description" />
                                  </children>
                               </VBox>
                            </children>
@@ -174,9 +174,9 @@
                      <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="79.0" prefWidth="447.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#deleteRepairJob" prefHeight="41.0" prefWidth="106.0" text="Delete" />
+                              <Button mnemonicParsing="false" onAction="#deleteBooking" prefHeight="41.0" prefWidth="106.0" text="Delete" />
                               <Pane prefHeight="79.0" prefWidth="73.0" HBox.hgrow="ALWAYS" />
-                              <Button mnemonicParsing="false" onAction="#updateRepairJob" prefHeight="41.0" prefWidth="106.0" text="Update" />
+                              <Button mnemonicParsing="false" onAction="#updateBooking" prefHeight="41.0" prefWidth="106.0" text="Update" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="19.0" prefWidth="447.0">

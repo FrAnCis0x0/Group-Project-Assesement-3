@@ -10,6 +10,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import qpims.QProperty;
+import qpims.model.Property;
 
 /**
  * FXML Controller class
@@ -20,7 +26,22 @@ public class PropertyController implements Initializable {
 
     @FXML
     private Button btnCreate;
-
+    @FXML
+    private TextField tfSearch;
+    @FXML
+    private TextField tfAddress;
+    @FXML
+    private TextField tfAgentName;
+    @FXML
+    private TableView<Property> tbDisplay;
+    @FXML
+    private ComboBox<?> cbAssociatedCustomer;
+    @FXML
+    private ComboBox<?> cbPropertyType;
+    @FXML
+    private TextField tfYear;
+    @FXML
+    private TextArea taDisplay;
     /**
      * Initializes the controller class.
      */
@@ -31,10 +52,14 @@ public class PropertyController implements Initializable {
 
     @FXML
     private void goToPropertyView(ActionEvent event) {
+                QProperty.setBorderCenter("property");
+
+        
     }
     @FXML
-    private void addProperty(){
-    
+    private void goToCreateProperty(){
+        QProperty.setBorderCenter("createProperty");
+
     }
     @FXML
     private void deleteProperty(){
@@ -45,5 +70,7 @@ public class PropertyController implements Initializable {
     private void updateProperty(){
         
     }
+    @FXML
+    private void createProperty(){}
     
 }

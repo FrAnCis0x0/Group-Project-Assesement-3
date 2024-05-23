@@ -10,10 +10,10 @@ public class Booking {
     private LocalDate completionDate;
     private double charge;
     private String staffName;
-    private String jobType;
+    private JobType jobType;
     
     public Booking(){}
-    public Booking(int propertyId, String description, LocalDate bookingDate, LocalDate completionDate, double charge, String staffName, String jobType) {
+    public Booking(int propertyId, String description, LocalDate bookingDate, LocalDate completionDate, double charge, String staffName, JobType jobType) {
         this.propertyId = propertyId;
         this.description = description;
         this.bookingDate = bookingDate;
@@ -79,11 +79,11 @@ public class Booking {
         this.staffName = staffName;
     }
 
-    public String getJobType() {
+    public JobType getJobType() {
         return jobType;
     }
 
-    public void setJobType(String jobType) {
+    public void setJobType(JobType jobType) {
         this.jobType = jobType;
     }
     

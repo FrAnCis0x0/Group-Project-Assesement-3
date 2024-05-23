@@ -65,8 +65,8 @@ public class QPropertyDAO implements ICustomer, IProperty, IBooking, IUser {
     }
 
     @Override
-    public void addProperty(String address, String description, String year, String propertyType, int customerId) {
-        propertyModel.addProperty(address, description, year, propertyType, customerId);
+    public void addProperty(String address, String description, String year, String agentName, PropertyType propertyType, int customerId) {
+        propertyModel.addProperty(address, description, year, agentName, propertyType, customerId);
     }
 
     @Override
@@ -80,8 +80,8 @@ public class QPropertyDAO implements ICustomer, IProperty, IBooking, IUser {
     }
 
     @Override
-    public void updateProperty(int propertyId, String address, String description, String year, String propertyType, int customerId) {
-        propertyModel.updateProperty(propertyId, address, description, year, propertyType, customerId);
+    public void updateProperty(int propertyId, String address, String description, String year, String agentName, PropertyType propertyType, int customerId) {
+        propertyModel.updateProperty(propertyId, address, description, year, agentName, propertyType, customerId);
     }
 
     @Override
@@ -90,7 +90,7 @@ public class QPropertyDAO implements ICustomer, IProperty, IBooking, IUser {
     }
 
     @Override
-    public void addBooking(int propertyId, String description, String bookingDate, String completionDate, double charge, String staffName, String jobType) {
+    public void addBooking(int propertyId, String description, String bookingDate, String completionDate, double charge, String staffName, JobType jobType) {
         bookingModel.addBooking(propertyId, description, bookingDate, completionDate, charge, staffName, jobType);
     }
 
@@ -110,7 +110,7 @@ public class QPropertyDAO implements ICustomer, IProperty, IBooking, IUser {
     }
 
     @Override
-    public List<Booking> getAllCompletedBookingsByType(String jobType) {
+    public List<Booking> getAllCompletedBookingsByType(JobType jobType) {
         return bookingModel.getAllCompletedBookingsByType(jobType);
     }
 
@@ -120,7 +120,7 @@ public class QPropertyDAO implements ICustomer, IProperty, IBooking, IUser {
     }
 
     @Override
-    public void updateBooking(int jobId, int propertyId, String description, String bookingDate, String completionDate, double charge, String staffName, String jobType) {
+    public void updateBooking(int jobId, int propertyId, String description, String bookingDate, String completionDate, double charge, String staffName, JobType jobType) {
         bookingModel.updateBooking(jobId, propertyId, description, bookingDate, completionDate, charge, staffName, jobType);
     }
 

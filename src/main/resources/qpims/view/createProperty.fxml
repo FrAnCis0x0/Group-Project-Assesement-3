@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qpims.controller.PropertyController">
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qpims.controller.PropertyController">
    <center>
       <VBox alignment="CENTER" prefHeight="560.0" prefWidth="800.0">
          <children>
@@ -22,7 +22,7 @@
                </font>
             </Text>
             <Pane prefHeight="48.0" prefWidth="1000.0" />
-            <HBox alignment="CENTER" prefHeight="170.0" prefWidth="1000.0">
+            <HBox alignment="CENTER" prefHeight="231.0" prefWidth="800.0">
                <children>
                   <VBox prefHeight="186.0" prefWidth="267.0">
                      <children>
@@ -35,7 +35,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Text>
-                                    <TextField alignment="CENTER" prefHeight="38.0" prefWidth="228.0" promptText="address" />
+                                    <TextField fx:id="tfAddress" alignment="CENTER" prefHeight="38.0" prefWidth="228.0" promptText="address" />
                                  </children>
                               </VBox>
                            </children>
@@ -49,7 +49,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Text>
-                                    <TextField alignment="CENTER" prefHeight="38.0" prefWidth="228.0" promptText="agent name" />
+                                    <TextField fx:id="tfAgentName" alignment="CENTER" prefHeight="38.0" prefWidth="228.0" promptText="agent name" />
                                  </children>
                               </VBox>
                            </children>
@@ -72,7 +72,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Text>
-                                    <ComboBox prefHeight="38.0" prefWidth="228.0" promptText="Select Customer" />
+                                    <ComboBox fx:id="cbAssociatedCustomer" prefHeight="38.0" prefWidth="228.0" promptText="Select Customer" />
                                  </children>
                               </VBox>
                            </children>
@@ -86,7 +86,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Text>
-                                    <ComboBox prefHeight="38.0" prefWidth="228.0" promptText="Select Type" />
+                                    <ComboBox fx:id="cbPropertyType" prefHeight="38.0" prefWidth="228.0" promptText="Select Type" />
                                  </children>
                               </VBox>
                            </children>
@@ -100,11 +100,11 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="232.0" prefWidth="800.0">
+            <HBox alignment="CENTER" prefHeight="266.0" prefWidth="800.0">
                <children>
                   <VBox prefHeight="159.0" prefWidth="553.0">
                      <children>
-                        <HBox alignment="TOP_CENTER" prefHeight="79.0" prefWidth="447.0">
+                        <HBox alignment="TOP_CENTER" prefHeight="127.0" prefWidth="553.0">
                            <children>
                               <VBox prefHeight="132.0" prefWidth="228.0">
                                  <children>
@@ -113,7 +113,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Text>
-                                    <TextField alignment="CENTER" prefHeight="38.0" prefWidth="228.0" promptText="Year" />
+                                    <TextField fx:id="tfYear" alignment="CENTER" prefHeight="38.0" prefWidth="228.0" promptText="Year" />
                                  </children>
                               </VBox>
                            </children>
@@ -127,7 +127,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Text>
-                                    <TextArea prefHeight="83.0" prefWidth="468.0" promptText="description" />
+                                    <TextArea fx:id="taDisplay" prefHeight="83.0" prefWidth="468.0" promptText="description" />
                                  </children>
                               </VBox>
                            </children>
@@ -147,7 +147,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="79.0" prefWidth="447.0">
                            <children>
-                              <Button fx:id="btnCreate" mnemonicParsing="false" prefHeight="41.0" prefWidth="106.0" text="Create" />
+                              <Button mnemonicParsing="false" onAction="#createProperty" prefHeight="41.0" prefWidth="106.0" text="Create" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="19.0" prefWidth="447.0">

@@ -42,12 +42,15 @@ public class MainController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        // change center to customer
         mainPane.setCenter(getView("customer"));
+        //share reference to main pane
+        QProperty.setSharedBorderPane(mainPane);
     }
     
     @FXML
     private void gotoCustomerView(){
+        //change center to customer
         mainPane.setCenter(getView("customer"));
     }
     @FXML
@@ -56,15 +59,18 @@ public class MainController implements Initializable {
     }
     @FXML
     private void gotoRepairJobView(){
+        //change center to booking
         mainPane.setCenter(getView("booking"));
     }
     @FXML
     private void gotoManagerReportView(){
+        //change center to manager report
         mainPane.setCenter(getView("managerReport"));
     }
     private Pane getView(String fileName){
         Pane view = null;
         try{
+            //Load fxml file
             FXMLLoader loader = new FXMLLoader(QProperty.class.getResource("view/"+fileName+".fxml"));
             view = loader.load();
             
@@ -78,7 +84,8 @@ public class MainController implements Initializable {
 
     @FXML
     private void LogOut(ActionEvent event) throws IOException {
-        QProperty.setRoot("login");
+        QProperty.setSharedBorderPane(null);
+        QProperty.setRoot("view/login");
     }
     
 }

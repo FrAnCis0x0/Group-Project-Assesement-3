@@ -7,22 +7,21 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CustomerModel implements ICustomer {
-    private Connection connection;
+    private Connection connection = null;
     private PreparedStatement insertCustomer;
     private PreparedStatement selectCustomerByNameOrPhone;
     private PreparedStatement getAllCustomers;
     private PreparedStatement deleteCustomerById;
     private PreparedStatement updateCustomer;
     
-
     public CustomerModel(Connection connection) {
         this.connection = connection;
         try {
-            insertCustomer = connection.prepareStatement("INSERT INTO customer (first_name, last_name, address, phone) VALUES (?, ?, ?, ?)");
-            selectCustomerByNameOrPhone = connection.prepareStatement("SELECT * FROM customer WHERE first_name LIKE ? OR last_name LIKE ? OR phone LIKE ?");
+            insertCustomer = connection.prepareStatement("INSERT INTO customer (first_name, last_name, address, phone_number) VALUES (?, ?, ?, ?)");
+            selectCustomerByNameOrPhone = connection.prepareStatement("SELECT * FROM customer WHERE first_name LIKE ? OR last_name LIKE ? OR phone_number LIKE ?");
             getAllCustomers = connection.prepareStatement("SELECT * FROM customer");
             deleteCustomerById = connection.prepareStatement("DELETE FROM customer WHERE customer_id = ?");
-            updateCustomer = connection.prepareStatement("UPDATE customer SET first_name = ?, last_name = ?, address = ?, phone = ? WHERE customer_id = ?");
+            updateCustomer = connection.prepareStatement("UPDATE customer SET first_name = ?, last_name = ?, address = ?, phone_number = ? WHERE customer_id = ?");
         } catch (SQLException ex) {
             Logger.getLogger(BookingModel.class.getName()).log(Level.SEVERE, "Database does not exist!!", ex);
     
@@ -55,7 +54,7 @@ public class CustomerModel implements ICustomer {
                 customer.setFirstName(rs.getString("first_name"));
                 customer.setLastName(rs.getString("last_name"));
                 customer.setAddress(rs.getString("address"));
-                customer.setPhone(rs.getString("phone"));
+                customer.setPhone(rs.getString("phone_number"));
                 customers.add(customer);
             }
             return customers;
@@ -76,7 +75,7 @@ public class CustomerModel implements ICustomer {
                 customer.setFirstName(rs.getString("first_name"));
                 customer.setLastName(rs.getString("last_name"));
                 customer.setAddress(rs.getString("address"));
-                customer.setPhone(rs.getString("phone"));
+                customer.setPhone(rs.getString("phone_number"));
                 customers.add(customer);
             }
             return customers;

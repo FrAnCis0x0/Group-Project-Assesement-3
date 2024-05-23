@@ -18,11 +18,11 @@ public class PropertyModel implements IProperty {
         this.connection = connection;
         
         try {
-            insertProperty = connection.prepareStatement("INSERT INTO property (address, description, year, property_type, customer_id) VALUES (?, ?, ?, ?, ?)");
+            insertProperty = connection.prepareStatement("INSERT INTO property (address, description, built_year, agent_name, property_type, customer_id) VALUES (?, ?, ?, ?, ?, ?)");
             selectPropertyByAddress = connection.prepareStatement("SELECT * FROM property WHERE address LIKE ?");
             selectAllProperties = connection.prepareStatement("SELECT * FROM property");
             deletePropertyById = connection.prepareStatement("DELETE FROM property WHERE property_id = ?");
-            updateProperty = connection.prepareStatement("UPDATE property SET address = ?, description = ?, year = ?, property_type = ?, customer_id = ? WHERE property_id = ?");
+            updateProperty = connection.prepareStatement("UPDATE property SET address = ?, description = ?, built_year = ?, agent_name = ?, property_type = ?, customer_id = ? WHERE property_id = ?");
         } catch (SQLException ex) {
             Logger.getLogger(BookingModel.class.getName()).log(Level.SEVERE, "Database does not exist!!", ex);
     
@@ -32,13 +32,14 @@ public class PropertyModel implements IProperty {
     
 
     @Override
-    public void addProperty(String address, String description, String year, String propertyType, int customerId) {
+    public void addProperty(String address, String description, String built_year, String agentName, PropertyType propertyType, int customerId) {
         try {
             insertProperty.setString(1, address);
             insertProperty.setString(2, description);
-            insertProperty.setString(3, year);
-            insertProperty.setString(4, propertyType);
-            insertProperty.setInt(5, customerId);
+            insertProperty.setString(3, built_year);
+            insertProperty.setString(4, agentName);
+            insertProperty.setString(5, propertyType.name());
+            insertProperty.setInt(6, customerId);
             insertProperty.executeUpdate();
         } catch (SQLException ex) {
             
@@ -58,8 +59,8 @@ public class PropertyModel implements IProperty {
                 property.setPropertyId(rs.getInt("property_id"));
                 property.setAddress(rs.getString("address"));
                 property.setDescription(rs.getString("description"));
-                property.setYear(rs.getString("year"));
-                property.setPropertyType(rs.getString("property_type"));
+                property.setYear(rs.getString("built_year"));
+                property.setPropertyType(PropertyType.valueOf(rs.getString("property_type")));
                 property.setCustomerId(rs.getInt("customer_id"));
                 properties.add(property);
             }
@@ -80,8 +81,8 @@ public class PropertyModel implements IProperty {
                 property.setPropertyId(rs.getInt("property_id"));
                 property.setAddress(rs.getString("address"));
                 property.setDescription(rs.getString("description"));
-                property.setYear(rs.getString("year"));
-                property.setPropertyType(rs.getString("property_type"));
+                property.setYear(rs.getString("built_year"));
+                property.setPropertyType(PropertyType.valueOf(rs.getString("property_type")));
                 property.setCustomerId(rs.getInt("customer_id"));
                 properties.add(property);
             }
@@ -93,14 +94,15 @@ public class PropertyModel implements IProperty {
     }
 
     @Override
-    public void updateProperty(int propertyId, String address, String description, String year, String propertyType, int customerId) {
+    public void updateProperty(int propertyId, String address, String description, String built_year, String agentName, PropertyType propertyType, int customerId) {
         try {
             updateProperty.setString(1, address);
             updateProperty.setString(2, description);
-            updateProperty.setString(3, year);
-            updateProperty.setString(4, propertyType);
-            updateProperty.setInt(5, customerId);
-            updateProperty.setInt(6, propertyId);
+            updateProperty.setString(3, built_year);
+            updateProperty.setString(4, agentName);
+            updateProperty.setString(5, propertyType.name());
+            updateProperty.setInt(6, customerId);
+            updateProperty.setInt(7, propertyId);
             updateProperty.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(PropertyModel.class.getName()).log(Level.SEVERE, "Failed to update property", ex);

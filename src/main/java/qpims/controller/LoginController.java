@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import qpims.QProperty;
 import qpims.model.QPropertyDAO;
@@ -15,6 +16,10 @@ public class LoginController implements Initializable {
 
     @FXML
     private Text tfDbStatus;
+    @FXML
+    private TextField tfUsername;
+    @FXML
+    private TextField tfPassword;
     private String status;
     /**
      * Initializes the controller class.
