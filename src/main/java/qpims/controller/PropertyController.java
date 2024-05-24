@@ -71,6 +71,8 @@ public class PropertyController implements Initializable {
         
     }
     @FXML
-    private void createProperty(){}
-    
+    private void createProperty(){
+
+    }
+
 }

@@ -44,10 +44,11 @@
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="350.0" prefWidth="800.0">
                <children>
-                  <TableView fx:id="tbDisplay" prefHeight="350.0" prefWidth="612.0">
+                  <TableView fx:id="tbDisplay" prefHeight="296.0" prefWidth="778.0">
                      <columns>
-                        <TableColumn prefWidth="168.0" text="Address" />
-                        <TableColumn minWidth="0.0" prefWidth="130.0" text="Desciption" />
+                        <TableColumn prefWidth="38.0" text="ID" />
+                        <TableColumn prefWidth="220.0" text="Address" />
+                        <TableColumn minWidth="0.0" prefWidth="208.0" text="Desciption" />
                         <TableColumn prefWidth="77.0" text="Built Year" />
                         <TableColumn prefWidth="127.0" text="Agent Name" />
                         <TableColumn prefWidth="109.0" text="Property Type" />

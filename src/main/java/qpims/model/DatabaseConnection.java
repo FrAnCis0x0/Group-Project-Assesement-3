@@ -25,6 +25,7 @@ public class DatabaseConnection {
             }
         } catch (ClassNotFoundException | SQLException e) {
             setConnectionStatus("Offline");
+            e.printStackTrace();
         }
     }
     public static DatabaseConnection getInstance() {

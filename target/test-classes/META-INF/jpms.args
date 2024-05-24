@@ -1,4 +1,0 @@
---patch-module
-qpims=_
---add-reads
-qpims=ALL-UNNAMED
