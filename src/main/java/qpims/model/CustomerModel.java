@@ -17,22 +17,22 @@ public class CustomerModel implements ICustomer {
     public CustomerModel(Connection connection) {
         this.connection = connection;
         try {
-            insertCustomer = connection.prepareStatement("INSERT INTO customer (first_name, last_name, address, phone_number) VALUES (?, ?, ?, ?)");
+            insertCustomer = connection.prepareStatement("INSERT INTO customer (first_name, last_name, email, phone_number) VALUES (?, ?, ?, ?)");
             selectCustomerByNameOrPhone = connection.prepareStatement("SELECT * FROM customer WHERE first_name LIKE ? OR last_name LIKE ? OR phone_number LIKE ?");
             getAllCustomers = connection.prepareStatement("SELECT * FROM customer");
             deleteCustomerById = connection.prepareStatement("DELETE FROM customer WHERE customer_id = ?");
-            updateCustomer = connection.prepareStatement("UPDATE customer SET first_name = ?, last_name = ?, address = ?, phone_number = ? WHERE customer_id = ?");
+            updateCustomer = connection.prepareStatement("UPDATE customer SET first_name = ?, last_name = ?, email = ?, phone_number = ? WHERE customer_id = ?");
         } catch (SQLException ex) {
             Logger.getLogger(BookingModel.class.getName()).log(Level.SEVERE, "Database does not exist!!", ex);
     
         }
     }
     @Override
-    public void addCustomer(String firstName, String lastName, String address, String phone) {
+    public void addCustomer(String firstName, String lastName, String email, String phone) {
         try {
             insertCustomer.setString(1, firstName);
             insertCustomer.setString(2, lastName);
-            insertCustomer.setString(3, address);
+            insertCustomer.setString(3, email);
             insertCustomer.setString(4, phone);
             insertCustomer.executeUpdate();
         } catch (SQLException ex) {
@@ -53,7 +53,7 @@ public class CustomerModel implements ICustomer {
                 customer.setCustomerId(rs.getInt("customer_id"));
                 customer.setFirstName(rs.getString("first_name"));
                 customer.setLastName(rs.getString("last_name"));
-                customer.setAddress(rs.getString("address"));
+                customer.setEmail(rs.getString("email"));
                 customer.setPhone(rs.getString("phone_number"));
                 customers.add(customer);
             }
@@ -74,7 +74,7 @@ public class CustomerModel implements ICustomer {
                 customer.setCustomerId(rs.getInt("customer_id"));
                 customer.setFirstName(rs.getString("first_name"));
                 customer.setLastName(rs.getString("last_name"));
-                customer.setAddress(rs.getString("address"));
+                customer.setEmail(rs.getString("email"));
                 customer.setPhone(rs.getString("phone_number"));
                 customers.add(customer);
             }
@@ -96,11 +96,11 @@ public class CustomerModel implements ICustomer {
     }
 
     @Override
-    public void updateCustomer(int customerId, String firstName, String lastName, String address, String phone) {
+    public void updateCustomer(int customerId, String firstName, String lastName, String email, String phone) {
         try {
             updateCustomer.setString(1, firstName);
             updateCustomer.setString(2, lastName);
-            updateCustomer.setString(3, address);
+            updateCustomer.setString(3, email);
             updateCustomer.setString(4, phone);
             updateCustomer.setInt(5, customerId);
             updateCustomer.executeUpdate();
