@@ -27,7 +27,8 @@ public class BookingModel implements IBooking {
             selectAllBookings = connection.prepareStatement("SELECT * FROM booking");
             
             //create query that selects all entires from Booking table by address
-            selectBookingByAddress = connection.prepareStatement("SELECT * FROM booking WHERE property_id = ?");
+            //Join property table to get address
+            selectBookingByAddress = connection.prepareStatement("SELECT * FROM booking JOIN property ON booking.property_id = property.property_id WHERE property.address LIKE ?");
             
             //create query that selects all charges from Booking table
             selectAllBookingCharges = connection.prepareStatement("SELECT charge FROM booking");
@@ -73,7 +74,7 @@ public class BookingModel implements IBooking {
     @Override
     public List<Booking> searchBookingByAddress(String address) {
         try {
-            selectBookingByAddress.setString(1, address);
+            selectBookingByAddress.setString(1,"%"+address+"%");
             ResultSet resultSet = selectBookingByAddress.executeQuery();
             ArrayList bookings = new ArrayList<Booking>();
             

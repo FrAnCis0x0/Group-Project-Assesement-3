@@ -59,7 +59,6 @@ public class UserModel implements IUser {
             ResultSet rs = selectUserByUsernameAndPassword.executeQuery();
             if (rs.next()) {
                 User user = new User();
-                user.setUserId(rs.getInt("user_id"));
                 user.setFirstName(rs.getString("first_name"));
                 user.setLastName(rs.getString("last_name"));
                 user.setEmail(rs.getString("email"));

@@ -60,6 +60,7 @@ public class PropertyModel implements IProperty {
                 property.setAddress(rs.getString("address"));
                 property.setDescription(rs.getString("description"));
                 property.setYear(rs.getString("built_year"));
+                property.setAgentName(rs.getString("agent_name"));
                 property.setPropertyType(PropertyType.valueOf(rs.getString("property_type")));
                 property.setCustomerId(rs.getInt("customer_id"));
                 properties.add(property);
@@ -82,6 +83,7 @@ public class PropertyModel implements IProperty {
                 property.setAddress(rs.getString("address"));
                 property.setDescription(rs.getString("description"));
                 property.setYear(rs.getString("built_year"));
+                property.setAgentName(rs.getString("agent_name"));
                 property.setPropertyType(PropertyType.valueOf(rs.getString("property_type")));
                 property.setCustomerId(rs.getInt("customer_id"));
                 properties.add(property);

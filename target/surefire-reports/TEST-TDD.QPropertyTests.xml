@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="TDD.QPropertyTests" time="1.569" tests="12" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\renza\OneDrive - CQUniversity\2024\Term 1\COIT12200 Software Design &amp; Development\assesments\A1\QPIMS\target\test-classes;C:\Users\renza\.m2\repository\org\openjfx\javafx-controls\13\javafx-controls-13.jar;C:\Users\renza\.m2\repository\org\openjfx\javafx-graphics\13\javafx-graphics-13.jar;C:\Users\renza\.m2\repository\org\openjfx\javafx-base\13\javafx-base-13.jar;C:\Users\renza\.m2\repository\org\openjfx\javafx-fxml\13\javafx-fxml-13.jar;C:\Users\renza\.m2\repository\mysql\mysql-connector-java\8.0.22\mysql-connector-java-8.0.22.jar;C:\Users\renza\.m2\repository\com\google\protobuf\protobuf-java\3.11.4\protobuf-java-3.11.4.jar;C:\Users\renza\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\renza\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\renza\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\renza\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Australia/Brisbane"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="user.country" value="AU"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
+    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter C:\Users\renza\AppData\Local\Temp\surefire506639028264181040 2024-05-24T02-32-44_428-jvmRun1 surefire-20240524023245298_1tmp surefire_0-20240524023245298_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="test" value="TDD.QPropertyTests"/>
+    <property name="surefire.test.class.path" value="C:\Users\renza\OneDrive - CQUniversity\2024\Term 1\COIT12200 Software Design &amp; Development\assesments\A1\QPIMS\target\test-classes;C:\Users\renza\.m2\repository\org\openjfx\javafx-controls\13\javafx-controls-13.jar;C:\Users\renza\.m2\repository\org\openjfx\javafx-graphics\13\javafx-graphics-13.jar;C:\Users\renza\.m2\repository\org\openjfx\javafx-base\13\javafx-base-13.jar;C:\Users\renza\.m2\repository\org\openjfx\javafx-fxml\13\javafx-fxml-13.jar;C:\Users\renza\.m2\repository\mysql\mysql-connector-java\8.0.22\mysql-connector-java-8.0.22.jar;C:\Users\renza\.m2\repository\com\google\protobuf\protobuf-java\3.11.4\protobuf-java-3.11.4.jar;C:\Users\renza\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\renza\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\renza\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\renza\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\renza"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="jdk.module.path" value="C:\Users\renza\OneDrive - CQUniversity\2024\Term 1\COIT12200 Software Design &amp; Development\assesments\A1\QPIMS\target\classes;C:\Users\renza\.m2\repository\org\openjfx\javafx-controls\13\javafx-controls-13-win.jar;C:\Users\renza\.m2\repository\org\openjfx\javafx-graphics\13\javafx-graphics-13-win.jar;C:\Users\renza\.m2\repository\org\openjfx\javafx-base\13\javafx-base-13-win.jar;C:\Users\renza\.m2\repository\org\openjfx\javafx-fxml\13\javafx-fxml-13-win.jar"/>
+    <property name="java.version.date" value="2024-01-16"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-21"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\renza\OneDrive - CQUniversity\2024\Term 1\COIT12200 Software Design &amp; Development\assesments\A1\QPIMS"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\renza\.m2\repository\org\apache\maven\surefire\surefire-api\3.1.2\surefire-api-3.1.2.jar;C:\Users\renza\.m2\repository\org\apache\maven\surefire\surefire-booter\3.1.2\surefire-booter-3.1.2.jar;C:\Users\renza\.m2\repository\org\apache\maven\surefire\surefire-extensions-spi\3.1.2\surefire-extensions-spi-3.1.2.jar;C:\Users\renza\.m2\repository\org\apache\maven\surefire\surefire-logger-api\3.1.2\surefire-logger-api-3.1.2.jar;C:\Users\renza\.m2\repository\org\apache\maven\surefire\surefire-shared-utils\3.1.2\surefire-shared-utils-3.1.2.jar;C:\Users\renza\OneDrive - CQUniversity\2024\Term 1\COIT12200 Software Design &amp; Development\assesments\A1\QPIMS\target\test-classes;C:\Users\renza\.m2\repository\org\openjfx\javafx-controls\13\javafx-controls-13.jar;C:\Users\renza\.m2\repository\org\openjfx\javafx-graphics\13\javafx-graphics-13.jar;C:\Users\renza\.m2\repository\org\openjfx\javafx-base\13\javafx-base-13.jar;C:\Users\renza\.m2\repository\org\openjfx\javafx-fxml\13\javafx-fxml-13.jar;C:\Users\renza\.m2\repository\mysql\mysql-connector-java\8.0.22\mysql-connector-java-8.0.22.jar;C:\Users\renza\.m2\repository\com\google\protobuf\protobuf-java\3.11.4\protobuf-java-3.11.4.jar;C:\Users\renza\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\renza\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\renza\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\renza\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;C:\Users\renza\.m2\repository\org\apache\maven\surefire\surefire-junit-platform\3.1.2\surefire-junit-platform-3.1.2.jar;C:\Users\renza\.m2\repository\org\apache\maven\surefire\common-java5\3.1.2\common-java5-3.1.2.jar;C:\Users\renza\.m2\repository\org\junit\platform\junit-platform-launcher\1.6.0\junit-platform-launcher-1.6.0.jar;C:\Users\renza\.m2\repository\org\junit\platform\junit-platform-engine\1.6.0\junit-platform-engine-1.6.0.jar;C:\Users\renza\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.0\junit-jupiter-engine-5.6.0.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="21.0.2+13-LTS-58"/>
+    <property name="user.name" value="renza"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="maven.ext.class.path" value="C:\Program Files\NetBeans-20\netbeans\java\maven-nblib\netbeans-eventspy.jar"/>
+    <property name="localRepository" value="C:\Users\renza\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\renza\AppData\Local\Temp\"/>
+    <property name="java.version" value="21.0.2"/>
+    <property name="user.dir" value="C:\Users\renza\OneDrive - CQUniversity\2024\Term 1\COIT12200 Software Design &amp; Development\assesments\A1\QPIMS"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-21\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\VMware\VMware Workstation\bin\;C:\Program Files\Java\jdk-17\bin\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\PuTTY\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\msys64\mingw64\bin;C:\msys64\usr\bin;C:\msys64\mingw64\include;C:\Users\renza\OneDrive\Documents\javafx-sdk-17.0.7\lib;C:\Program Files\dotnet\;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\PowerShell\7-preview\preview;C:\Program Files\PowerShell\7\;C:\Users\renza\AppData\Local\Microsoft\WindowsApps;C:\Users\renza\AppData\Local\atom\bin;C:\Program Files (x86)\Nmap;C:\Users\renza\AppData\Local\Programs\Microsoft VS Code\bin;C:\MinGW\bin;C:\Users\renza\AppData\Roaming\npm;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.2.1\bin;C:\Users\renza\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Java\jdk-17\bin;C:\Users\renza\OneDrive\Documents\javafx-sdk-17.0.7\lib;C:\Users\renza\AppData\Local\JetBrains\Toolbox\scripts;;."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="21.0.2+13-LTS-58"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="65.0"/>
+  </properties>
+  <testcase name="testDeleteCustomerById" classname="TDD.QPropertyTests" time="1.38">
+    <system-out><![CDATA[deleteCustomerById
+]]></system-out>
+  </testcase>
+  <testcase name="testUpdateProperty" classname="TDD.QPropertyTests" time="0.03">
+    <system-out><![CDATA[updateProperty
+]]></system-out>
+  </testcase>
+  <testcase name="testAddCustomer" classname="TDD.QPropertyTests" time="0.008">
+    <system-out><![CDATA[addCustomer
+]]></system-out>
+  </testcase>
+  <testcase name="testGetAllCustomers" classname="TDD.QPropertyTests" time="0.005">
+    <system-out><![CDATA[getAllCustomers
+]]></system-out>
+  </testcase>
+  <testcase name="testSearchPropertyByAddress" classname="TDD.QPropertyTests" time="0.004">
+    <system-out><![CDATA[searchPropertyByAddress
+]]></system-out>
+  </testcase>
+  <testcase name="testUpdateCustomer" classname="TDD.QPropertyTests" time="0.012">
+    <system-out><![CDATA[updateCustomer
+]]></system-out>
+  </testcase>
+  <testcase name="testDeletePropertyById" classname="TDD.QPropertyTests" time="0.011">
+    <system-out><![CDATA[deletePropertyById
+]]></system-out>
+  </testcase>
+  <testcase name="testGetDBStatus" classname="TDD.QPropertyTests" time="0.004">
+    <system-out><![CDATA[getDBStatus
+]]></system-out>
+  </testcase>
+  <testcase name="testSearchCustomerByNameOrPhone" classname="TDD.QPropertyTests" time="0.005">
+    <system-out><![CDATA[searchCustomerByNameOrPhone
+]]></system-out>
+  </testcase>
+  <testcase name="testGetSha256" classname="TDD.QPropertyTests" time="0.002">
+    <system-out><![CDATA[getSha256
+]]></system-out>
+  </testcase>
+  <testcase name="testGetAllProperty" classname="TDD.QPropertyTests" time="0.006">
+    <system-out><![CDATA[getAllProperty
+]]></system-out>
+  </testcase>
+  <testcase name="testAddProperty" classname="TDD.QPropertyTests" time="0.007">
+    <system-out><![CDATA[addProperty
+]]></system-out>
+  </testcase>
+</testsuite>
