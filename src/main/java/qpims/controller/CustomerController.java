@@ -41,14 +41,7 @@ public class CustomerController implements Initializable {
     
     @FXML
     private TextField tfSearch;
-    @FXML
-    private TextField tfFirstName;
-    @FXML
-    private TextField tfLastName;
-    @FXML
-    private TextField tfAddress;
-    @FXML
-    private TextField tfPhone;
+
     private List<Customer> customerList;
     private Customer selectedCustomer;
     private ObservableList<Customer> customerObservableList;
@@ -101,21 +94,9 @@ public class CustomerController implements Initializable {
         
         
     }    
+    
 
-    @FXML
-    private void goToCustomerView(ActionEvent event) {
-        QProperty.setBorderCenter("customer");
-    }
 
-    @FXML
-    private void deleteCustomer(ActionEvent event) {
-        
-    }
-
-    @FXML
-    private void updateCustomer(ActionEvent event) {
-        
-    }
     
     @FXML
     private void goToCreateCustomer(){

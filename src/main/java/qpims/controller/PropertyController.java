@@ -24,24 +24,12 @@ import qpims.model.Property;
  */
 public class PropertyController implements Initializable {
 
-    @FXML
-    private Button btnCreate;
+
     @FXML
     private TextField tfSearch;
-    @FXML
-    private TextField tfAddress;
-    @FXML
-    private TextField tfAgentName;
-    @FXML
+    
     private TableView<Property> tbDisplay;
-    @FXML
-    private ComboBox<?> cbAssociatedCustomer;
-    @FXML
-    private ComboBox<?> cbPropertyType;
-    @FXML
-    private TextField tfYear;
-    @FXML
-    private TextArea taDisplay;
+    
     /**
      * Initializes the controller class.
      */
@@ -50,29 +38,13 @@ public class PropertyController implements Initializable {
         // TODO
     }    
 
-    @FXML
-    private void goToPropertyView(ActionEvent event) {
-                QProperty.setBorderCenter("property");
-
-        
-    }
+    
     @FXML
     private void goToCreateProperty(){
         QProperty.setBorderCenter("createProperty");
 
     }
-    @FXML
-    private void deleteProperty(){
-        
-    }
-    
-    @FXML
-    private void updateProperty(){
-        
-    }
-    @FXML
-    private void createProperty(){
 
-    }
+
 
 }
