@@ -11,7 +11,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import qpims.QProperty;
 import qpims.model.Customer;
+import qpims.model.MessageBox;
 import qpims.model.QPropertyDAO;
+import qpims.model.Validate;
 
 import java.net.URL;
 import java.util.List;
@@ -52,9 +54,16 @@ public class CreateCustomerController implements Initializable {
     
     @FXML
     private void createCustomer(ActionEvent event) {
-        
+        //validate inputs
+        if(!Validate.getInstance().validateCustomer(tfFirstName.getText(), tfLastName.getText(), tfEmail.getText(), tfPhone.getText())){
+            return;
+        }
         dao.addCustomer(tfFirstName.getText(), tfLastName.getText(), tfEmail.getText(), tfPhone.getText());
+        //show success message
+        MessageBox.getInstance().showInfo("Customer created successfully.");
         clearInputs();
+        //go back to customer view
+        QProperty.setBorderCenter("customer");
     }
     
     @FXML

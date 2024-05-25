@@ -11,7 +11,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import qpims.QProperty;
 import qpims.model.Customer;
+import qpims.model.MessageBox;
 import qpims.model.QPropertyDAO;
+import qpims.model.Validate;
 
 import java.net.URL;
 import java.util.List;
@@ -65,8 +67,15 @@ public class CustomerDetailsController implements Initializable {
 
     @FXML
     private void updateCustomer(ActionEvent event) {
+        //validate inputs
+        if(!Validate.getInstance().validateCustomer(tfFirstName.getText(), tfLastName.getText(), tfAddress.getText(), tfPhone.getText())){
+            return;
+        }
         //update customer in database
         dao.updateCustomer(selectedCustomer.getCustomerId(), tfFirstName.getText(), tfLastName.getText(), tfAddress.getText(), tfPhone.getText());
+        //show success message
+        MessageBox.getInstance().showInfo("Customer updated successfully.");
+        
         
     }
     public void setData(Customer customer) {

@@ -49,6 +49,9 @@ public class LoginController implements Initializable {
     @FXML
     private void Login(ActionEvent event) throws IOException {
         if(status.equals("Online")){
+            if(!validateInputs()){
+                return;
+            }
             //check user credentials
             if(isCorrectCredentials()) {
                 //go to main view
@@ -60,6 +63,21 @@ public class LoginController implements Initializable {
         }else{
             showErrorMessage();
         }
+    }
+    
+    //validate inputs
+    private boolean validateInputs(){
+        if(tfUsername.getText().isEmpty() || tfPassword.getText().isEmpty()){
+            MessageBox.getInstance().showError("All fields are required.");
+            return false;
+        }
+        //make sure username is only letters and numbers plus underscore
+        if(!tfUsername.getText().matches("^[a-zA-Z0-9_]{1,20}$")){
+            MessageBox.getInstance().showError("Invalid username. Username must only contain alphabet and number characters.");
+            return false;
+        }
+        
+        return true;
     }
     
     private void showErrorMessage(){

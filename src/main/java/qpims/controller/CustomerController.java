@@ -17,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import qpims.QProperty;
 import qpims.model.Customer;
 import qpims.model.QPropertyDAO;
+import qpims.model.Validate;
 
 
 public class CustomerController implements Initializable {
@@ -45,6 +46,7 @@ public class CustomerController implements Initializable {
     private List<Customer> customerList;
     private Customer selectedCustomer;
     private ObservableList<Customer> customerObservableList;
+    private boolean isAllowed; //check if search is allowed to prevent multiple database calls
     
     /**
      * Initializes the controller class.
@@ -58,6 +60,12 @@ public class CustomerController implements Initializable {
         colEmail.setCellValueFactory( new PropertyValueFactory<>("email"));
         colPhone.setCellValueFactory( new PropertyValueFactory<>("phone"));
         
+        //center columns
+        colId.setStyle("-fx-alignment: CENTER;");
+        colFirstName.setStyle("-fx-alignment: CENTER;");
+        colLastName.setStyle("-fx-alignment: CENTER;");
+        colEmail.setStyle("-fx-alignment: CENTER;");
+        colPhone.setStyle("-fx-alignment: CENTER;");
         
         
         //Create observable list
@@ -78,18 +86,28 @@ public class CustomerController implements Initializable {
                 
             }
         });
+        //set isAllowed to true
+        isAllowed = true;
         
         //Add listener to search textfield
         tfSearch.textProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue.isEmpty()){
-                customerObservableList.clear();
-                customerObservableList.addAll(QPropertyDAO.getInstance().getAllCustomers());
+                if(isAllowed){
+                    customerObservableList.clear();
+                    customerObservableList.addAll(QPropertyDAO.getInstance().getAllCustomers());
+                    isAllowed = false;
+                }
             }else{
+                //validate search input
+                if(!Validate.getInstance().validateSearchInput(newValue)){
+                    tfSearch.clear();
+                    return;
+                }
                 //search customer by name or phone
                 //update observable list
                 customerObservableList.clear();
                 customerObservableList.addAll(QPropertyDAO.getInstance().searchCustomerByNameOrPhone(newValue));
-                
+                isAllowed = true;
                 
             }
         });
@@ -98,7 +116,10 @@ public class CustomerController implements Initializable {
     }    
     
 
-
+    @FXML
+    private void clearSearch(ActionEvent event) {
+        tfSearch.clear();
+    }
     
     @FXML
     private void goToCreateCustomer(){

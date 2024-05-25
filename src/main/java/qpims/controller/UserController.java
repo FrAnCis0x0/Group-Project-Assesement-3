@@ -45,10 +45,40 @@ public class UserController implements Initializable {
     
     @FXML
     private void createUser(){
+        if(!validateInputs()){
+            return;
+        }
         //create user
         dao.addUser(tfFirstName.getText(), tfLastName.getText(), tfEmail.getText(), tfUsername.getText(), tfPassword.getText());
         MessageBox.getInstance().showInfo("User created successfully.");
-        clearInputs();
+        //go back to login view
+        try {
+            QProperty.setRoot("view/login");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    private boolean validateInputs(){
+        if(tfFirstName.getText().isEmpty() || tfLastName.getText().isEmpty() || tfEmail.getText().isEmpty() || tfUsername.getText().isEmpty() || tfPassword.getText().isEmpty()){
+            MessageBox.getInstance().showError("All fields are required.");
+            return false;
+        }
+        if(!tfEmail.getText().matches("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")){
+            MessageBox.getInstance().showError("Invalid email address. Email must be in the format example@example.com.");
+            return false;
+        }
+        if(!tfUsername.getText().matches("^[a-zA-Z0-9_]{5,20}$")){
+            MessageBox.getInstance().showError("Invalid username. Username must be between 5 and 20 characters.");
+            return false;
+        }
+
+        //password must be at least 5 characters
+        if(tfPassword.getText().length() < 5){
+            MessageBox.getInstance().showError("Invalid password. Password must be at least 5 characters.");
+            return false;
+        }
+        return true;
     }
     
     private void clearInputs(){
