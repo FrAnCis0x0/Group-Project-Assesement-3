@@ -12,6 +12,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import qpims.QProperty;
+import qpims.model.MessageBox;
+import qpims.model.QPropertyDAO;
 
 public class UserController implements Initializable {
     @FXML
@@ -24,13 +26,16 @@ public class UserController implements Initializable {
     private TextField tfPassword;
     @FXML
     private TextField tfUsername;
+    private QPropertyDAO dao;
     
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        //initialize data access object
+        dao = QPropertyDAO.getInstance();
+        
     }    
 
     @FXML
@@ -39,9 +44,23 @@ public class UserController implements Initializable {
     }
     
     @FXML
-    private void createUser(){}
+    private void createUser(){
+        //create user
+        dao.addUser(tfFirstName.getText(), tfLastName.getText(), tfEmail.getText(), tfUsername.getText(), tfPassword.getText());
+        MessageBox.getInstance().showInfo("User created successfully.");
+        clearInputs();
+    }
     
+    private void clearInputs(){
+        tfFirstName.clear();
+        tfLastName.clear();
+        tfEmail.clear();
+        tfUsername.clear();
+        tfPassword.clear();
+    }
     @FXML
-    private void clear(){}
+    private void clear(){
+        clearInputs();
+    }
     
 }

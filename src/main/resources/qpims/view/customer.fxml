@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -51,6 +52,9 @@
                         <TableColumn fx:id="colPhone" prefWidth="115.0" text="Phone" />
                         <TableColumn fx:id="colEmail" prefWidth="200.0" text="Email" />
                      </columns>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </TableView>
                </children>
             </HBox>

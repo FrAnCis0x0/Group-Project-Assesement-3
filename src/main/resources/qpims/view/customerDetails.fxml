@@ -65,7 +65,7 @@
                            <children>
                               <VBox prefHeight="132.0" prefWidth="228.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
                                        <font>
                                           <Font size="18.0" />
                                        </font>

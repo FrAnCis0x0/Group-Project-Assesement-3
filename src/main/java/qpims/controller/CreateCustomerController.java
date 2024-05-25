@@ -30,22 +30,43 @@ public class CreateCustomerController implements Initializable {
     @FXML
     private TextField tfLastName;
     @FXML
-    private TextField tfAddress;
+    private TextField tfEmail;
     @FXML
     private TextField tfPhone;
-    private Customer selectedCustomer;
+    
+    private QPropertyDAO dao;
     
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        dao = QPropertyDAO.getInstance();
     }    
 
     @FXML
     private void goToCustomerView(ActionEvent event) {
+        clearInputs();
         QProperty.setBorderCenter("customer");
+    }
+    
+    @FXML
+    private void createCustomer(ActionEvent event) {
+        
+        dao.addCustomer(tfFirstName.getText(), tfLastName.getText(), tfEmail.getText(), tfPhone.getText());
+        clearInputs();
+    }
+    
+    @FXML
+    private void clear() {
+        clearInputs();
+    }
+    
+    private void clearInputs() {
+        tfFirstName.setText("");
+        tfLastName.setText("");
+        tfEmail.setText("");
+        tfPhone.setText("");
     }
 
     

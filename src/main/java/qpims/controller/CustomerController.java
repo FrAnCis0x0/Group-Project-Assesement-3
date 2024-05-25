@@ -60,7 +60,7 @@ public class CustomerController implements Initializable {
         
         
         
-        //Todo - create observer for customer list
+        //Create observable list
         customerObservableList = FXCollections.observableArrayList();
         
         //Get all customers from database
@@ -72,7 +72,9 @@ public class CustomerController implements Initializable {
         tbDisplay.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 selectedCustomer = newSelection; //Set selected customer
-                System.out.println(selectedCustomer.getCustomerId());
+                
+                //send selected customer to customer details controller
+                QProperty.sendDataToController("customerDetails", selectedCustomer);
                 
             }
         });

@@ -1,5 +1,7 @@
 package qpims.model;
 
+import javafx.application.Platform;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -25,7 +27,7 @@ public class DatabaseConnection {
             }
         } catch (ClassNotFoundException | SQLException e) {
             setConnectionStatus("Offline");
-            e.printStackTrace();
+            MessageBox.getInstance().showError(e.getMessage());
         }
     }
     public static DatabaseConnection getInstance() {

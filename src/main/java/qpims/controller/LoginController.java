@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import qpims.QProperty;
+import qpims.model.MessageBox;
 import qpims.model.QPropertyDAO;
 import javax.swing.*;
 
@@ -40,11 +41,22 @@ public class LoginController implements Initializable {
         
         }
     }
+    private boolean isCorrectCredentials(){
+        //check user credentials are correct
+        return QPropertyDAO.getInstance().getUserByUsernameAndPassword(tfUsername.getText(), tfPassword.getText()) != null;
+    }
 
     @FXML
     private void Login(ActionEvent event) throws IOException {
         if(status.equals("Online")){
-            QProperty.setRoot("view/main");
+            //check user credentials
+            if(isCorrectCredentials()) {
+                //go to main view
+                QProperty.setRoot("view/main");
+            }else{
+                //show error message
+                MessageBox.getInstance().showError("Invalid username or password.");
+            }
         }else{
             showErrorMessage();
         }
@@ -52,10 +64,7 @@ public class LoginController implements Initializable {
     
     private void showErrorMessage(){
         //show error message
-        JOptionPane optionPane = new JOptionPane("Database is offline. Please check the connection", JOptionPane.ERROR_MESSAGE);
-        JDialog dialog = optionPane.createDialog("Failure");
-        dialog.setAlwaysOnTop(true);//set the dialog always on top
-        dialog.setVisible(true);
+        MessageBox.getInstance().showError("Database is offline. Please try again later.");
         
     }
     

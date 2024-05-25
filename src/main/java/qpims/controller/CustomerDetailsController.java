@@ -32,7 +32,8 @@ public class CustomerDetailsController implements Initializable {
     @FXML
     private TextField tfPhone;
    
-    private Customer selectedCustomer;
+    private Customer selectedCustomer;// stores selected customer
+    private QPropertyDAO dao; //data access object
     
     
     /**
@@ -40,24 +41,42 @@ public class CustomerDetailsController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    
-    
+        dao = QPropertyDAO.getInstance();
         
-    }    
-
-    @FXML
-    private void goToCustomerView(ActionEvent event) {
+    }
+    private void goBack(){
         QProperty.setBorderCenter("customer");
     }
 
     @FXML
+    private void goToCustomerView(ActionEvent event) {
+        //go back to customer view
+        goBack();
+    }
+
+    @FXML
     private void deleteCustomer(ActionEvent event) {
+        //delete customer from database
+        dao.deleteCustomerById(selectedCustomer.getCustomerId());
+        //go back to customer view
+        goBack();
         
     }
 
     @FXML
     private void updateCustomer(ActionEvent event) {
+        //update customer in database
+        dao.updateCustomer(selectedCustomer.getCustomerId(), tfFirstName.getText(), tfLastName.getText(), tfAddress.getText(), tfPhone.getText());
         
     }
+    public void setData(Customer customer) {
+        selectedCustomer = customer;
+        tfFirstName.setText(selectedCustomer.getFirstName());
+        tfLastName.setText(selectedCustomer.getLastName());
+        tfAddress.setText(selectedCustomer.getEmail());
+        tfPhone.setText(selectedCustomer.getPhone());
+    }
+    
+    
 
 }

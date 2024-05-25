@@ -112,7 +112,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Text>
-                                    <PasswordField fx:id="tfPassword" prefHeight="38.0" prefWidth="228.0" promptText="password" />
+                                    <PasswordField fx:id="tfPassword" alignment="CENTER" prefHeight="38.0" prefWidth="228.0" promptText="password" />
                                  </children>
                               </VBox>
                            </children>

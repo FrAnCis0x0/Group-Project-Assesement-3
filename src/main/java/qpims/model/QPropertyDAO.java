@@ -40,8 +40,8 @@ public class QPropertyDAO implements ICustomer, IProperty, IBooking, IUser {
         return DatabaseConnection.getInstance().getConnectionStatus();
     }
     @Override
-    public void addCustomer(String firstName, String lastName, String address, String phone) {
-        customerModel.addCustomer(firstName, lastName, address, phone);
+    public void addCustomer(String firstName, String lastName, String email, String phone) {
+        customerModel.addCustomer(firstName, lastName, email, phone);
     }
 
     @Override

@@ -23,7 +23,7 @@
             <Pane prefHeight="29.0" prefWidth="800.0" />
             <HBox alignment="CENTER" prefHeight="227.0" prefWidth="800.0">
                <children>
-                  <BarChart fx:id="bcCompletedJobs" prefHeight="177.0" prefWidth="728.0" title="Distribution of Completed Jobs">
+                  <BarChart fx:id="bcCompletedJobs" legendSide="RIGHT" prefHeight="177.0" prefWidth="728.0" title="Distribution of Completed Jobs">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
@@ -33,9 +33,9 @@
                   </BarChart>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="235.0" prefWidth="800.0">
+            <HBox alignment="CENTER" prefHeight="235.0" prefWidth="766.0">
                <children>
-                  <BarChart fx:id="bcRepairJobs" prefHeight="177.0" prefWidth="728.0" title="Charges for Repair Jobs ">
+                  <BarChart fx:id="bcRepairJobs" barGap="1.0" categoryGap="1.0" legendSide="RIGHT" prefHeight="177.0" prefWidth="728.0" title="Charges for Repair Jobs ">
                      <xAxis>
                         <CategoryAxis side="BOTTOM" />
                      </xAxis>

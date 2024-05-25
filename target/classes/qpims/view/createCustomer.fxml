@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qpims.controller.CustomerController">
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qpims.controller.CreateCustomerController">
    <center>
       <VBox alignment="CENTER" prefHeight="560.0" prefWidth="800.0">
          <children>
@@ -65,12 +65,12 @@
                            <children>
                               <VBox prefHeight="132.0" prefWidth="228.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Text>
-                                    <TextField fx:id="tfAddress" alignment="CENTER" prefHeight="38.0" prefWidth="228.0" promptText="address" />
+                                    <TextField fx:id="tfEmail" alignment="CENTER" prefHeight="38.0" prefWidth="228.0" promptText="address" />
                                  </children>
                               </VBox>
                            </children>
@@ -104,7 +104,9 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="79.0" prefWidth="447.0">
                            <children>
-                              <Button fx:id="btnCreateCustomer" mnemonicParsing="false" prefHeight="41.0" prefWidth="106.0" text="Create" />
+                              <Button mnemonicParsing="false" onAction="#clear" prefHeight="41.0" prefWidth="106.0" text="Clear" />
+                              <Pane prefHeight="79.0" prefWidth="39.0" />
+                              <Button mnemonicParsing="false" onAction="#createCustomer" prefHeight="41.0" prefWidth="106.0" text="Create" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="19.0" prefWidth="447.0">
