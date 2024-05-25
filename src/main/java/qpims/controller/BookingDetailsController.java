@@ -26,7 +26,7 @@ public class BookingDetailsController implements Initializable {
     private ComboBox<?> cbPropertyID;
     @FXML
     private ComboBox<?> cbJobType;
-    
+
 
     @FXML
     private TextArea taDescription;
@@ -37,22 +37,22 @@ public class BookingDetailsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         dao = QPropertyDAO.getInstance();
-    }    
+    }
 
     @FXML
     private void goToBookingView(ActionEvent event) {
         QProperty.setBorderCenter("booking");
-        
+
     }
 
 
-    
- 
-    
+
+
+
     @FXML
     private void deteleBooking(){}
 
-    
+
     @FXML
     private void updateBooking(){}
 }

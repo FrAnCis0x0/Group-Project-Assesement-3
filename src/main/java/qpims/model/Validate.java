@@ -57,8 +57,8 @@ public class Validate {
 			return false;
 		}
 		//check if year is only numbers
-		if(!year.matches("^[0-9]*$")) {
-			MessageBox.getInstance().showWarning("Year must only contain numbers.");
+		if(!year.matches("^[0-9]{4}$")) {
+			MessageBox.getInstance().showWarning("Year must contain numbers and be 4-digit.");
 			return false;
 		}
 		//check if agent name is only letters

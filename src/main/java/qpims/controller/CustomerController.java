@@ -113,9 +113,7 @@ public class CustomerController implements Initializable {
         });
         
         
-    }    
-    
-
+    }
     @FXML
     private void clearSearch(ActionEvent event) {
         tfSearch.clear();

@@ -127,7 +127,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Text>
-                                    <TextArea fx:id="taDisplay" prefHeight="83.0" prefWidth="468.0" promptText="description" />
+                                    <TextArea fx:id="tfDescription" prefHeight="83.0" prefWidth="468.0" promptText="description" />
                                  </children>
                               </VBox>
                            </children>

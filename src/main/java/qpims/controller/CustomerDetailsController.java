@@ -22,8 +22,6 @@ import java.util.ResourceBundle;
 
 public class CustomerDetailsController implements Initializable {
     
-    
-    
 
     @FXML
     private TextField tfFirstName;
@@ -85,7 +83,4 @@ public class CustomerDetailsController implements Initializable {
         tfAddress.setText(selectedCustomer.getEmail());
         tfPhone.setText(selectedCustomer.getPhone());
     }
-    
-    
-
 }

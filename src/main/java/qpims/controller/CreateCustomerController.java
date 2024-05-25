@@ -22,11 +22,11 @@ import java.util.ResourceBundle;
 
 public class CreateCustomerController implements Initializable {
 
- 
-    
-    
-    
- 
+
+
+
+
+
     @FXML
     private TextField tfFirstName;
     @FXML
@@ -35,23 +35,23 @@ public class CreateCustomerController implements Initializable {
     private TextField tfEmail;
     @FXML
     private TextField tfPhone;
-    
+
     private QPropertyDAO dao;
-    
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         dao = QPropertyDAO.getInstance();
-    }    
+    }
 
     @FXML
     private void goToCustomerView(ActionEvent event) {
         clearInputs();
         QProperty.setBorderCenter("customer");
     }
-    
+
     @FXML
     private void createCustomer(ActionEvent event) {
         //validate inputs
@@ -65,12 +65,12 @@ public class CreateCustomerController implements Initializable {
         //go back to customer view
         QProperty.setBorderCenter("customer");
     }
-    
+
     @FXML
     private void clear() {
         clearInputs();
     }
-    
+
     private void clearInputs() {
         tfFirstName.setText("");
         tfLastName.setText("");
@@ -78,6 +78,6 @@ public class CreateCustomerController implements Initializable {
         tfPhone.setText("");
     }
 
-    
+
 
 }
