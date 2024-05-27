@@ -60,26 +60,40 @@ public class CreatePropertyController implements Initializable {
     @FXML
     private void createProperty(ActionEvent event) {
         // Validate inputs using the Validate class
-        if (!Validate.getInstance().validateProperty(tfAddress.getText(), tfDescription.getText(), tfYear.getText(), tfAgentName.getText(), cbPropertyType.getValue() != null ? cbPropertyType.getValue().name() : "")) {
+        if (!Validate.getInstance().validateProperty(
+                tfAddress.getText(),
+                tfDescription.getText(),
+                tfYear.getText(),
+                tfAgentName.getText(),
+                cbPropertyType.getValue() != null ? cbPropertyType.getValue().name() : "",
+                cbAssociatedCustomer.getValue() != null ? cbAssociatedCustomer.getValue().toString() : ""
+        )) {
             return;
         }
 
         Customer associatedCustomer = cbAssociatedCustomer.getValue();
-        if (associatedCustomer != null) {
-            int customerId = associatedCustomer.getCustomerId();
-            dao.addProperty(tfAddress.getText(), tfDescription.getText(), tfYear.getText(), tfAgentName.getText(), cbPropertyType.getValue(), customerId);
+        int customerId = associatedCustomer.getCustomerId();
+        dao.addProperty(
+                tfAddress.getText(),
+                tfDescription.getText(),
+                tfYear.getText(),
+                tfAgentName.getText(),
+                cbPropertyType.getValue(),
+                customerId
+        );
 
-            // Show success message
-            MessageBox.getInstance().showInfo("Property created successfully.");
-            // Clear input fields
-            clearFields();
-        } else {
-            // Handle the case when no customer is selected
-            MessageBox.getInstance().showError("Please select an associated customer.");
-        }
+        // Show success message
+        MessageBox.getInstance().showInfo("Property created successfully.");
+        // Clear input fields
+        clearInputs();
     }
 
-    private void clearFields() {
+    @FXML
+    private void clear(ActionEvent event) {
+        clearInputs();
+    }
+
+    private void clearInputs() {
         tfAddress.clear();
         tfDescription.clear();
         tfYear.clear();

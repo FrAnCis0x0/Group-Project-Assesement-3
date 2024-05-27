@@ -46,13 +46,13 @@
                <children>
                   <TableView fx:id="tbDisplay" prefHeight="323.0" prefWidth="738.0">
                      <columns>
-                        <TableColumn prefWidth="79.0" text="Property ID" />
-                        <TableColumn minWidth="0.0" prefWidth="174.0" text="Desciption" />
-                        <TableColumn prefWidth="86.0" text="Booking Date" />
-                        <TableColumn prefWidth="115.0" text="Completion Date" />
-                        <TableColumn prefWidth="59.0" text="Charge" />
-                        <TableColumn prefWidth="110.0" text="Staff Name" />
-                        <TableColumn prefWidth="138.0" text="Job Type" />
+                        <TableColumn fx:id="colJobId" prefWidth="79.0" text="Job ID" />
+                        <TableColumn fx:id="colDescription" minWidth="0.0" prefWidth="174.0" text="Desciption" />
+                        <TableColumn fx:id="colBookingDate" prefWidth="86.0" text="Booking Date" />
+                        <TableColumn fx:id="colCompletionDate" prefWidth="115.0" text="Completion Date" />
+                        <TableColumn fx:id="colCharge" prefWidth="59.0" text="Charge" />
+                        <TableColumn fx:id="colStaffName" prefWidth="110.0" text="Staff Name" />
+                        <TableColumn fx:id="colJobType" prefWidth="138.0" text="Job Type" />
                      </columns>
                   </TableView>
                </children>

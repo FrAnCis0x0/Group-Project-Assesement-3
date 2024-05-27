@@ -75,6 +75,9 @@ public class Property {
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Property ID: " + getPropertyId();
+    }
 }

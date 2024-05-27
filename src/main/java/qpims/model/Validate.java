@@ -1,4 +1,7 @@
 package qpims.model;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 
 public class Validate {
 	private static Validate instance;
@@ -51,8 +54,8 @@ public class Validate {
 		return true;
 	}
 	//validate property inputs
-	public boolean validateProperty(String address, String description, String year, String agentName, String propertyType) {
-		if(address.isEmpty() || description.isEmpty() || year.isEmpty() || agentName.isEmpty() || propertyType.isEmpty()) {
+	public boolean validateProperty(String address, String description, String year, String agentName, String propertyType, String associatedCustomer) {
+		if (address.isEmpty() || description.isEmpty() || year.isEmpty() || agentName.isEmpty() || propertyType.isEmpty() || associatedCustomer.isEmpty()) {
 			MessageBox.getInstance().showWarning("All fields are required.");
 			return false;
 		}
@@ -82,8 +85,8 @@ public class Validate {
 	}
 	
 	//validate Booking inputs
-	public boolean validateBooking(String description, String bookingDate, String completionDate, String charge, String staffName, String jobType) {
-		if(description.isEmpty() || bookingDate.isEmpty() || completionDate.isEmpty() || charge.isEmpty() || staffName.isEmpty() || jobType.isEmpty()) {
+	public boolean validateBooking(String description, String bookingDate, String completionDate, String charge, String staffName, String jobType, String propertyId) {
+		if (description.isEmpty() || bookingDate.isEmpty() || completionDate.isEmpty() || charge.isEmpty() || staffName.isEmpty() || jobType.isEmpty() || propertyId.isEmpty()) {
 			MessageBox.getInstance().showWarning("All fields are required.");
 			return false;
 		}
@@ -112,7 +115,11 @@ public class Validate {
 			MessageBox.getInstance().showWarning("Invalid completion date. Date must be in the format yyyy-MM-dd, dd-MM-yyyy.");
 			return false;
 		}
-		
+		//check if booking date is before completion date
+		if (LocalDate.parse(bookingDate, DateTimeFormatter.ofPattern("yyyy-MM-dd")).isAfter(LocalDate.parse(completionDate, DateTimeFormatter.ofPattern("yyyy-MM-dd")))) {
+			MessageBox.getInstance().showWarning("Completion date must be after booking date.");
+			return false;
+		}
 		
 		return true;
 	}

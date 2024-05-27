@@ -13,10 +13,10 @@ import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
 import qpims.QProperty;
 import qpims.model.Customer;
+import qpims.model.MessageBox;
 import qpims.model.Property;
 import qpims.model.PropertyType;
 import qpims.model.QPropertyDAO;
-import qpims.model.MessageBox;
 import qpims.model.Validate;
 
 public class PropertyDetailsController implements Initializable {
@@ -24,15 +24,15 @@ public class PropertyDetailsController implements Initializable {
     @FXML
     private TextField tfAddress;
     @FXML
-    private TextArea tfDescription;
+    private TextField tfAgentName;
+    @FXML
+    private ComboBox<Customer> cbAssociatedCustomer;
+    @FXML
+    private ComboBox<PropertyType> cbPropertyType;
     @FXML
     private TextField tfYear;
     @FXML
-    private TextField tfAgentName;
-    @FXML
-    private ComboBox<String> cbPropertyType;
-    @FXML
-    private ComboBox<Customer> cbAssociatedCustomer;
+    private TextArea tfDescription;
 
     private Property selectedProperty;
     private QPropertyDAO dao;
@@ -43,9 +43,7 @@ public class PropertyDetailsController implements Initializable {
         dao = QPropertyDAO.getInstance();
 
         // Populate the property type ComboBox with enum values
-        for (PropertyType type : PropertyType.values()) {
-            cbPropertyType.getItems().add(type.name());
-        }
+        cbPropertyType.setItems(FXCollections.observableArrayList(PropertyType.values()));
 
         // Initialize the customer ComboBox
         customerObservableList = FXCollections.observableArrayList();
@@ -74,11 +72,26 @@ public class PropertyDetailsController implements Initializable {
 
     @FXML
     private void updateProperty(ActionEvent event) {
-        if (!Validate.getInstance().validateProperty(tfAddress.getText(), tfDescription.getText(), tfYear.getText(), tfAgentName.getText(), cbPropertyType.getValue())) {
+        if (!Validate.getInstance().validateProperty(
+                tfAddress.getText(),
+                tfDescription.getText(),
+                tfYear.getText(),
+                tfAgentName.getText(),
+                cbPropertyType.getValue() != null ? cbPropertyType.getValue().name() : "",
+                cbAssociatedCustomer.getValue() != null ? String.valueOf(cbAssociatedCustomer.getValue().getCustomerId()) : ""
+        )) {
             return;
         }
 
-        dao.updateProperty(selectedProperty.getPropertyId(), tfAddress.getText(), tfDescription.getText(), tfYear.getText(), tfAgentName.getText(), PropertyType.valueOf(cbPropertyType.getValue()), cbAssociatedCustomer.getValue().getCustomerId());
+        dao.updateProperty(
+                selectedProperty.getPropertyId(),
+                tfAddress.getText(),
+                tfDescription.getText(),
+                tfYear.getText(),
+                tfAgentName.getText(),
+                cbPropertyType.getValue(),
+                cbAssociatedCustomer.getValue().getCustomerId()
+        );
         MessageBox.getInstance().showInfo("Property updated successfully.");
     }
 
@@ -88,7 +101,7 @@ public class PropertyDetailsController implements Initializable {
         tfDescription.setText(selectedProperty.getDescription());
         tfYear.setText(selectedProperty.getYear());
         tfAgentName.setText(selectedProperty.getAgentName());
-        cbPropertyType.setValue(selectedProperty.getPropertyType().name());
+        cbPropertyType.setValue(selectedProperty.getPropertyType());  // Correct type set here
 
         for (Customer customer : customerObservableList) {
             if (customer.getCustomerId() == selectedProperty.getCustomerId()) {
