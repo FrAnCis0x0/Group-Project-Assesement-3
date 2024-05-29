@@ -21,6 +21,7 @@ import qpims.model.Validate;
 
 public class CreateBookingController implements Initializable {
 
+    // FXML variables for the UI components
     @FXML
     private TextField tfStaffName;
     @FXML
@@ -36,9 +37,9 @@ public class CreateBookingController implements Initializable {
     @FXML
     private TextArea taDescription;
 
-    private QPropertyDAO dao;
-    private ObservableList<Property> propertyObservableList;
-    private ObservableList<JobType> jobTypeObservableList;
+    private QPropertyDAO dao; // DAO for accessing the data
+    private ObservableList<Property> propertyObservableList; // Observable list for the properties
+    private ObservableList<JobType> jobTypeObservableList; // Observable list for the job types
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -47,21 +48,24 @@ public class CreateBookingController implements Initializable {
         // Initialize the property ComboBox
         propertyObservableList = FXCollections.observableArrayList();
         List<Property> propertyList = dao.getAllProperty();
+        // Add the properties to the observable list if they are not null
         if (propertyList != null) {
             propertyObservableList.addAll(propertyList);
         }
         cbPropertyID.setItems(propertyObservableList);
 
-        // Initialize the job type ComboBox
+        // Initialize the job type ComboBox with enum values
         jobTypeObservableList = FXCollections.observableArrayList(JobType.values());
         cbJobType.setItems(jobTypeObservableList);
     }
 
+    // Go to the booking view
     @FXML
     private void goToBookingView(ActionEvent event) {
         QProperty.setBorderCenter("booking");
     }
 
+    // Create a booking
     @FXML
     private void createBooking(ActionEvent event) {
         // Validate inputs using the Validate class
@@ -74,12 +78,13 @@ public class CreateBookingController implements Initializable {
                 cbJobType.getValue() != null ? cbJobType.getValue().name() : "",
                 cbPropertyID.getValue() != null ? String.valueOf(cbPropertyID.getValue().getPropertyId()) : ""
         )) {
-            return;
+            return; // If the inputs are invalid, return
         }
 
-        Property associatedProperty = cbPropertyID.getValue();
-        int propertyId = associatedProperty.getPropertyId();
-        double charge = Double.parseDouble(tfCharge.getText());
+        Property associatedProperty = cbPropertyID.getValue(); // Get the selected property
+        int propertyId = associatedProperty.getPropertyId(); // Get the property ID
+        double charge = Double.parseDouble(tfCharge.getText()); // Get the charge as a double value
+        // Add the booking to the database
         dao.addBooking(
                 propertyId,
                 taDescription.getText(),
@@ -89,18 +94,17 @@ public class CreateBookingController implements Initializable {
                 tfStaffName.getText(),
                 cbJobType.getValue()
         );
-
-        // Show success message
-        MessageBox.getInstance().showInfo("Booking created successfully.");
-        // Clear input fields
-        clearInputs();
+        MessageBox.getInstance().showInfo("Booking created successfully."); // Show a success message
+        clearInputs(); // Clear the inputs after a successful booking
     }
 
+    // Clear the inputs
     @FXML
     private void clear(ActionEvent event) {
         clearInputs();
     }
 
+    //Method to clear all input fields
     private void clearInputs() {
         taDescription.clear();
         dpBookingDate.setValue(null);

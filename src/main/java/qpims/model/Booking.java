@@ -3,6 +3,7 @@ package qpims.model;
 import java.time.LocalDate;
 
 public class Booking {
+    // Variables for the booking class
     private int jobId;
     private int propertyId;
     private String description;
@@ -11,8 +12,10 @@ public class Booking {
     private double charge;
     private String staffName;
     private JobType jobType;
-    
+
+    // Default constructor
     public Booking(){}
+    // Constructor to initialize variables
     public Booking(int propertyId, String description, LocalDate bookingDate, LocalDate completionDate, double charge, String staffName, JobType jobType) {
         this.propertyId = propertyId;
         this.description = description;
@@ -23,6 +26,7 @@ public class Booking {
         this.jobType = jobType;
     }
 
+    // Getters and setters
     public int getJobId() {
         return jobId;
     }
@@ -86,6 +90,5 @@ public class Booking {
     public void setJobType(JobType jobType) {
         this.jobType = jobType;
     }
-    
-    
+
 }

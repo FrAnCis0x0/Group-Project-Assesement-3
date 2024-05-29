@@ -15,6 +15,7 @@ import javax.swing.*;
 
 public class LoginController implements Initializable {
 
+    // FXML variables for the UI components
     @FXML
     private Text tfDbStatus;
     @FXML
@@ -32,6 +33,7 @@ public class LoginController implements Initializable {
         tfDbStatus.setText(status);
     }    
 
+    //go to sign up view
     @FXML
     private void signUp(ActionEvent event) throws IOException {
         if(status.equals("Online")){
@@ -46,6 +48,7 @@ public class LoginController implements Initializable {
         return QPropertyDAO.getInstance().getUserByUsernameAndPassword(tfUsername.getText(), tfPassword.getText()) != null;
     }
 
+    //login to the system
     @FXML
     private void Login(ActionEvent event) throws IOException {
         if(status.equals("Online")){

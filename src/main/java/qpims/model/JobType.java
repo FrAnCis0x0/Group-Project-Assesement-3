@@ -1,5 +1,6 @@
 package qpims.model;
 
+// Enum class for JobType that defines the different types of jobs that can be assigned to a booking
 public enum JobType {
     ELECTRICAL,
     PLUMBING,

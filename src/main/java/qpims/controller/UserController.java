@@ -16,6 +16,7 @@ import qpims.model.MessageBox;
 import qpims.model.QPropertyDAO;
 
 public class UserController implements Initializable {
+    // FXML variables for the UI components
     @FXML
     private TextField tfFirstName;
     @FXML
@@ -37,12 +38,12 @@ public class UserController implements Initializable {
         dao = QPropertyDAO.getInstance();
         
     }    
-
+    //go to login view
     @FXML
     private void goToLoginView(ActionEvent event) throws IOException {
         QProperty.setRoot("view/login");
     }
-    
+    //create a new user and add to the database
     @FXML
     private void createUser(){
         if(!validateInputs()){
@@ -58,7 +59,7 @@ public class UserController implements Initializable {
             throw new RuntimeException(e);
         }
     }
-    
+    //validate user inputs
     private boolean validateInputs(){
         if(tfFirstName.getText().isEmpty() || tfLastName.getText().isEmpty() || tfEmail.getText().isEmpty() || tfUsername.getText().isEmpty() || tfPassword.getText().isEmpty()){
             MessageBox.getInstance().showError("All fields are required.");
@@ -80,7 +81,7 @@ public class UserController implements Initializable {
         }
         return true;
     }
-    
+    //clear the input fields
     private void clearInputs(){
         tfFirstName.clear();
         tfLastName.clear();

@@ -2,17 +2,18 @@ package qpims.model;
 
 import javax.swing.*;
 
+// Singleton class for MessageBox that shows different types of messages
 public class MessageBox {
 	private static MessageBox instance = null;
 	private MessageBox() {
 	}
+	//get the instance of the MessageBox
 	public static MessageBox getInstance() {
 		if (instance == null) {
 			instance = new MessageBox();
 		}
 		return instance;
 	}
-	
 	public void showInfo(String message){
 		//show message
 		JOptionPane optionPane = new JOptionPane(message, JOptionPane.INFORMATION_MESSAGE);
@@ -35,6 +36,5 @@ public class MessageBox {
 		dialog.setAlwaysOnTop(true);//set the dialog always on top
 		dialog.setVisible(true);
 	}
-	
-	
+
 }

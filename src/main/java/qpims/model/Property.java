@@ -1,6 +1,7 @@
 package qpims.model;
 
 public class Property {
+    // Variables for the property class
     private int propertyId;
     private String address;
     private String description;
@@ -8,8 +9,10 @@ public class Property {
     private String agentName;
     private PropertyType propertyType;
     private int customerId;
-    
+
+    // Default constructor
     public Property() {}
+    // Constructor to initialize variables
     public Property(String address, String description, String year,String agentName, PropertyType propertyType, int customerId) {
         this.address = address;
         this.description = description;
@@ -19,6 +22,7 @@ public class Property {
         this.customerId = customerId;
     }
 
+    // Getters and setters
     public int getPropertyId() {
         return propertyId;
     }
@@ -76,6 +80,7 @@ public class Property {
         this.customerId = customerId;
     }
 
+    // toString method to return the property ID as a string for display purposes in the table view
     @Override
     public String toString() {
         return "Property ID: " + getPropertyId();

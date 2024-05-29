@@ -21,15 +21,18 @@ public class DatabaseConnection {
         password = "Str0ngP@ssw0rd!!";//this is a weak password :)
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(url, user, password);
+            connection = DriverManager.getConnection(url, user, password); //connect to the database using the url, user and password
+            //set the connection status to online if connection is successful
             if (connection != null) {
                 setConnectionStatus("Online");
             }
         } catch (ClassNotFoundException | SQLException e) {
-            setConnectionStatus("Offline");
+            setConnectionStatus("Offline"); //set the connection status to offline if connection is unsuccessful
             MessageBox.getInstance().showError(e.getMessage());
         }
     }
+
+    //get the instance of the database connection
     public static DatabaseConnection getInstance() {
         if (instance == null) {
             instance = new DatabaseConnection();

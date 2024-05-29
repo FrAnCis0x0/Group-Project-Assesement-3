@@ -23,6 +23,7 @@ import qpims.model.Validate;
 
 public class BookingDetailsController implements Initializable {
 
+    // FXML variables for the UI components
     @FXML
     private TextField tfStaffName;
     @FXML
@@ -38,10 +39,11 @@ public class BookingDetailsController implements Initializable {
     @FXML
     private TextArea taDescription;
 
-    private Booking selectedBooking;
-    private QPropertyDAO dao;
-    private ObservableList<Property> propertyObservableList;
+    private Booking selectedBooking; // The selected booking to be updated
+    private QPropertyDAO dao; //DAO for accessing the data
+    private ObservableList<Property> propertyObservableList; //Observable list for the properties
 
+    // Initialize the controller class
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         dao = QPropertyDAO.getInstance();
@@ -49,33 +51,38 @@ public class BookingDetailsController implements Initializable {
         // Populate the job type ComboBox with enum values
         cbJobType.setItems(FXCollections.observableArrayList(JobType.values()));
 
-        // Initialize the property ComboBox
+        // Initialize the property ComboBox with the properties from the database
         propertyObservableList = FXCollections.observableArrayList();
         List<Property> propertyList = dao.getAllProperty();
+        // Add the properties to the observable list if they are not null
         if (propertyList != null) {
             propertyObservableList.addAll(propertyList);
         }
         cbPropertyID.setItems(propertyObservableList);
     }
 
+    // Go back to the repair job view
     private void goBack() {
         QProperty.setBorderCenter("booking");
     }
-
+    // Event handlers to go back to the repair job view
     @FXML
     private void goToRepairJobView(ActionEvent event) {
         goBack();
     }
 
+    // Event handlers to delete the booking
     @FXML
     private void deleteBooking(ActionEvent event) {
         dao.deleteBookingById(selectedBooking.getJobId());
-        MessageBox.getInstance().showInfo("Booking deleted successfully.");
+        MessageBox.getInstance().showInfo("Booking deleted successfully."); // Show a success message box
         goBack();
     }
 
+    // Event handlers to update the selected booking
     @FXML
     private void updateBooking(ActionEvent event) {
+        // Validate the input fields using the Validate class
         if (!Validate.getInstance().validateBooking(
                 taDescription.getText(),
                 dpBookingDate.getValue().toString(),
@@ -85,10 +92,11 @@ public class BookingDetailsController implements Initializable {
                 cbJobType.getValue() != null ? cbJobType.getValue().name() : "",
                 cbPropertyID.getValue() != null ? String.valueOf(cbPropertyID.getValue().getPropertyId()) : ""
         )) {
-            return;
+            return; // If the inputs are invalid, return
         }
 
-            double charge = Double.parseDouble(tfCharge.getText());
+            double charge = Double.parseDouble(tfCharge.getText()); // Parse the charge to double value
+           // Update the booking using the DAO
             dao.updateBooking(
                     selectedBooking.getJobId(),
                     cbPropertyID.getValue().getPropertyId(),
@@ -103,6 +111,7 @@ public class BookingDetailsController implements Initializable {
 
     }
 
+    // Set the data of the selected booking
     public void setData(Booking booking)
     {
         selectedBooking = booking;
@@ -113,6 +122,7 @@ public class BookingDetailsController implements Initializable {
         tfStaffName.setText(selectedBooking.getStaffName());
         cbJobType.setValue(selectedBooking.getJobType());
 
+        // Find and set the associated property
         for (Property property : propertyObservableList)
         {
             if (property.getPropertyId() == selectedBooking.getPropertyId())

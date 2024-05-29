@@ -7,9 +7,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BookingModel implements IBooking {
-    
+
     private final Connection connection; //connection object
-    
+
+    //prepared statements for queries
     private PreparedStatement selectAllBookings;
     private PreparedStatement selectBookingByAddress;
     private PreparedStatement selectAllBookingCharges;
@@ -17,8 +18,7 @@ public class BookingModel implements IBooking {
     private PreparedStatement selectAllCompletedBookingByType;
     private PreparedStatement deleteBookingById;
     private PreparedStatement updateBooking;
-    
-    
+
     public BookingModel(Connection connection) {
         this.connection = connection;
         
@@ -45,11 +45,11 @@ public class BookingModel implements IBooking {
             //create query that updates entry in Booking table by jobId
             updateBooking = connection.prepareStatement("UPDATE booking SET property_id = ?, description = ?, booking_date = ?, completion_date = ?, charge = ?, staff_name = ?, job_type = ? WHERE job_id = ?");
         } catch (SQLException ex) {
-            Logger.getLogger(BookingModel.class.getName()).log(Level.SEVERE, "Database does not exist!!", ex);
+            Logger.getLogger(BookingModel.class.getName()).log(Level.SEVERE, "Database does not exist!!", ex); //log error message
         }
     }
     
-    
+    //add booking to Booking table
     @Override
     public void addBooking(int propertyId, String description, String bookingDate, String completionDate, double charge, String staffName, JobType jobType) {
         
@@ -71,12 +71,13 @@ public class BookingModel implements IBooking {
     }
     
 
+    //search for booking by address and return list of bookings that match
     @Override
     public List<Booking> searchBookingByAddress(String address) {
         try {
             selectBookingByAddress.setString(1,"%"+address+"%");
-            ResultSet resultSet = selectBookingByAddress.executeQuery();
-            ArrayList bookings = new ArrayList<Booking>();
+            ResultSet resultSet = selectBookingByAddress.executeQuery(); //execute query
+            ArrayList bookings = new ArrayList<Booking>(); //create list to store bookings
             
             //loop through result set and add each entry to list
             while (resultSet.next()) {
@@ -96,9 +97,10 @@ public class BookingModel implements IBooking {
         }catch (SQLException ex){
             Logger.getLogger(BookingModel.class.getName()).log(Level.SEVERE, "Failed to search by address!", ex);
         }
-        return null;
+        return null; //return null if search fails
     }
 
+    //return list of all bookings in Booking table
     @Override
     public List<Booking> getAllBookings() {
         try {
@@ -126,6 +128,7 @@ public class BookingModel implements IBooking {
         return null;
     }
 
+    //return list of all charges in Booking table
     @Override
     public List<Double> getAllBookingCharges() {
         try {
@@ -144,10 +147,11 @@ public class BookingModel implements IBooking {
         return null;
     }
 
+    //return list of all completed bookings in Booking table by job type
     @Override
     public List<Booking> getAllCompletedBookingsByType(JobType jobType) {
         try {
-            selectAllCompletedBookingByType.setString(1, jobType.toMySQLName());
+            selectAllCompletedBookingByType.setString(1, jobType.toMySQLName()); //set job type in query
             ResultSet resultSet = selectAllCompletedBookingByType.executeQuery();
             ArrayList bookings = new ArrayList<Booking>();
             
@@ -172,10 +176,11 @@ public class BookingModel implements IBooking {
         return null;
     }
 
+    //delete booking by jobId
     @Override
     public void deleteBookingById(int jobId) {
         try {
-            deleteBookingById.setInt(1, jobId);
+            deleteBookingById.setInt(1, jobId); //set jobId in query
             deleteBookingById.executeUpdate();
             
         }catch (SQLException ex){
@@ -183,6 +188,7 @@ public class BookingModel implements IBooking {
         }
     }
 
+    //update booking
     @Override
     public void updateBooking(int jobId, int propertyId, String description, String bookingDate, String completionDate, double charge, String staffName, JobType jobType) {
         try {

@@ -147,6 +147,8 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="79.0" prefWidth="447.0">
                            <children>
+                              <Button mnemonicParsing="false" onAction="#clear" prefHeight="41.0" prefWidth="106.0" text="Clear" />
+                              <Pane prefHeight="79.0" prefWidth="60.0" />
                               <Button mnemonicParsing="false" onAction="#createProperty" prefHeight="41.0" prefWidth="106.0" text="Create" />
                            </children>
                         </HBox>

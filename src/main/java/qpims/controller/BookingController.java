@@ -19,10 +19,11 @@ import qpims.model.Validate;
 
 public class BookingController implements Initializable {
 
+    // FXML variables for the UI components
     @FXML
     private TableView<Booking> tbDisplay;
     @FXML
-    private TableColumn<Booking, Integer> colJobId;  // Corrected: Only one colJobId
+    private TableColumn<Booking, Integer> colJobId;
     @FXML
     private TableColumn<Booking, String> colDescription;
     @FXML
@@ -35,17 +36,17 @@ public class BookingController implements Initializable {
     private TableColumn<Booking, String> colStaffName;
     @FXML
     private TableColumn<Booking, String> colJobType;
-
     @FXML
     private TextField tfSearch;
 
-    private List<Booking> bookingList;
-    private Booking selectedBooking;
-    private ObservableList<Booking> bookingObservableList;
-    private boolean isAllowed;
+    private List<Booking> bookingList; // List of bookings from database
+    private Booking selectedBooking; // Selected booking from tableview
+    private ObservableList<Booking> bookingObservableList; // Observable list for the bookings
+    private boolean isAllowed; // Boolean to check if search is allowed
 
-    private QPropertyDAO dao;
+    private QPropertyDAO dao; //DAO for accessing the data
 
+    // Initialize the controller class
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // Set table view columns
@@ -66,7 +67,7 @@ public class BookingController implements Initializable {
         colStaffName.setStyle("-fx-alignment: CENTER;");
         colJobType.setStyle("-fx-alignment: CENTER;");
 
-        // Create observable list
+        // Create observable list for bookings
         bookingObservableList = FXCollections.observableArrayList();
 
         // Get all bookings from database
@@ -74,20 +75,18 @@ public class BookingController implements Initializable {
         bookingList = dao.getAllBookings();
         bookingObservableList.addAll(bookingList);
 
-        // Set tableview items
+        // Set tableview items to observable list
         tbDisplay.setItems(bookingObservableList);
 
         // Get selected booking from tableview
         tbDisplay.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 selectedBooking = newSelection; // Set selected booking
-                // Send selected booking to booking details controller
-                QProperty.sendDataToController("bookingDetails", selectedBooking);
+                QProperty.sendDataToController("bookingDetails", selectedBooking); // Send selected booking to booking details controller
             }
         });
 
-        // Set isAllowed to true
-        isAllowed = true;
+        isAllowed = true; // Set isAllowed to true to allow search
 
         // Add listener to search textfield
         tfSearch.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -95,27 +94,29 @@ public class BookingController implements Initializable {
                 if (isAllowed) {
                     bookingObservableList.clear();
                     bookingObservableList.addAll(dao.getAllBookings());
-                    isAllowed = false;
+                    isAllowed = false; // Set isAllowed to false to prevent search when textfield is empty
                 }
             } else {
-                // Validate search input
+                // Validate search input using the Validate class
                 if (!Validate.getInstance().validateSearchInput(newValue)) {
                     tfSearch.clear();
-                    return;
+                    return; // Return if search input is invalid
                 }
                 // Search booking by description
                 bookingObservableList.clear();
                 bookingObservableList.addAll(dao.searchBookingByAddress(newValue));
-                isAllowed = true;
+                isAllowed = true; // Set isAllowed to true to allow search
             }
         });
     }
 
+    // Clear search textfield
     @FXML
     private void clearSearch(ActionEvent event) {
         tfSearch.clear();
     }
 
+    // Go to create booking view
     @FXML
     private void goToCreateBooking() {
         QProperty.setBorderCenter("createBooking");

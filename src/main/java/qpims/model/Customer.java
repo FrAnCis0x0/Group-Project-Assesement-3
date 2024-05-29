@@ -1,13 +1,16 @@
 package qpims.model;
 
-
 public class Customer {
+    // Variables for the customer class
     private int customerId;
     private String firstName;
     private String lastName;
     private String email;
     private String phone;
+
+    // Default constructor
     public Customer() {}
+    // Constructor to initialize variables
     public Customer(String firstName, String lastName, String email, String phone) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -15,6 +18,7 @@ public class Customer {
         this.phone = phone;
     }
 
+    // Getters and setters
     public int getCustomerId() {
         return customerId;
     }
@@ -55,6 +59,7 @@ public class Customer {
         this.phone = phone;
     }
 
+    // toString method to return customer ID as a string for display purposes in the table view
     @Override
     public String toString() {
         return "Customer ID: " + getCustomerId();

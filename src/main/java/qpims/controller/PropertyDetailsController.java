@@ -21,6 +21,7 @@ import qpims.model.Validate;
 
 public class PropertyDetailsController implements Initializable {
 
+    // FXML variables for the UI components
     @FXML
     private TextField tfAddress;
     @FXML
@@ -34,9 +35,9 @@ public class PropertyDetailsController implements Initializable {
     @FXML
     private TextArea tfDescription;
 
-    private Property selectedProperty;
-    private QPropertyDAO dao;
-    private ObservableList<Customer> customerObservableList;
+    private Property selectedProperty; // The selected property to be updated
+    private QPropertyDAO dao; // DAO for accessing the data
+    private ObservableList<Customer> customerObservableList; // Observable list for the customers
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -45,24 +46,27 @@ public class PropertyDetailsController implements Initializable {
         // Populate the property type ComboBox with enum values
         cbPropertyType.setItems(FXCollections.observableArrayList(PropertyType.values()));
 
-        // Initialize the customer ComboBox
+        // Initialize the customer ComboBox with the customers from the database
         customerObservableList = FXCollections.observableArrayList();
         List<Customer> customerList = dao.getAllCustomers();
         if (customerList != null) {
-            customerObservableList.addAll(customerList);
+            customerObservableList.addAll(customerList); // Add the customers to the observable list if they are not null
         }
-        cbAssociatedCustomer.setItems(customerObservableList);
+        cbAssociatedCustomer.setItems(customerObservableList); // Set the items of the ComboBox to the observable list
     }
 
+    // Method to go back to the property view
     private void goBack() {
         QProperty.setBorderCenter("property");
     }
 
+    // Event handler to go back to the property view
     @FXML
     private void goToPropertyView(ActionEvent event) {
         goBack();
     }
 
+    // Event handlers to delete the property
     @FXML
     private void deleteProperty(ActionEvent event) {
         dao.deletePropertyById(selectedProperty.getPropertyId());
@@ -70,8 +74,10 @@ public class PropertyDetailsController implements Initializable {
         goBack();
     }
 
+    // Event handlers to update the property
     @FXML
     private void updateProperty(ActionEvent event) {
+        // Validate the property details using the Validate class
         if (!Validate.getInstance().validateProperty(
                 tfAddress.getText(),
                 tfDescription.getText(),
@@ -80,9 +86,10 @@ public class PropertyDetailsController implements Initializable {
                 cbPropertyType.getValue() != null ? cbPropertyType.getValue().name() : "",
                 cbAssociatedCustomer.getValue() != null ? String.valueOf(cbAssociatedCustomer.getValue().getCustomerId()) : ""
         )) {
-            return;
+            return; // If the inputs are invalid, return
         }
 
+        // Update the property details in the database
         dao.updateProperty(
                 selectedProperty.getPropertyId(),
                 tfAddress.getText(),
@@ -95,14 +102,16 @@ public class PropertyDetailsController implements Initializable {
         MessageBox.getInstance().showInfo("Property updated successfully.");
     }
 
+    // Method to set the data of the selected property
     public void setData(Property property) {
         selectedProperty = property;
         tfAddress.setText(selectedProperty.getAddress());
         tfDescription.setText(selectedProperty.getDescription());
         tfYear.setText(selectedProperty.getYear());
         tfAgentName.setText(selectedProperty.getAgentName());
-        cbPropertyType.setValue(selectedProperty.getPropertyType());  // Correct type set here
+        cbPropertyType.setValue(selectedProperty.getPropertyType());
 
+        // Set the associated customer in the ComboBox
         for (Customer customer : customerObservableList) {
             if (customer.getCustomerId() == selectedProperty.getCustomerId()) {
                 cbAssociatedCustomer.setValue(customer);

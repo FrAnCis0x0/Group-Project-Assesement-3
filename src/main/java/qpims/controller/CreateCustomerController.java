@@ -22,11 +22,7 @@ import java.util.ResourceBundle;
 
 public class CreateCustomerController implements Initializable {
 
-
-
-
-
-
+    // FXML variables for the UI components
     @FXML
     private TextField tfFirstName;
     @FXML
@@ -46,19 +42,21 @@ public class CreateCustomerController implements Initializable {
         dao = QPropertyDAO.getInstance();
     }
 
+    //go back to customer view
     @FXML
     private void goToCustomerView(ActionEvent event) {
         clearInputs();
         QProperty.setBorderCenter("customer");
     }
 
+    //create a new customer and add to the database
     @FXML
     private void createCustomer(ActionEvent event) {
         //validate inputs
         if(!Validate.getInstance().validateCustomer(tfFirstName.getText(), tfLastName.getText(), tfEmail.getText(), tfPhone.getText())){
             return;
         }
-        dao.addCustomer(tfFirstName.getText(), tfLastName.getText(), tfEmail.getText(), tfPhone.getText());
+        dao.addCustomer(tfFirstName.getText(), tfLastName.getText(), tfEmail.getText(), tfPhone.getText()); //
         //show success message
         MessageBox.getInstance().showInfo("Customer created successfully.");
         clearInputs();
@@ -66,6 +64,7 @@ public class CreateCustomerController implements Initializable {
         QProperty.setBorderCenter("customer");
     }
 
+    //clear the input fields
     @FXML
     private void clear() {
         clearInputs();
@@ -77,7 +76,5 @@ public class CreateCustomerController implements Initializable {
         tfEmail.setText("");
         tfPhone.setText("");
     }
-
-
 
 }

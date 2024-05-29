@@ -22,7 +22,8 @@ import qpims.QProperty;
  * @author renza
  */
 public class MainController implements Initializable {
-    
+
+    //FXML variables for UI elements
     @FXML
     private Button btnCustomer;
     @FXML
@@ -53,6 +54,7 @@ public class MainController implements Initializable {
         //change center to customer
         mainPane.setCenter(getView("customer"));
     }
+    //go to each view
     @FXML
     private void gotoPropertyView(){
         mainPane.setCenter(getView("property"));
@@ -82,6 +84,7 @@ public class MainController implements Initializable {
         return view;
     }
 
+    //log out of the system
     @FXML
     private void LogOut(ActionEvent event) throws IOException {
         QProperty.setSharedBorderPane(null);

@@ -35,17 +35,12 @@ public class CustomerController implements Initializable {
     private TableColumn<Customer, String> colEmail;
     @FXML
     private TableColumn<Customer, String> colPhone;
-    
-    
-    
-    
-    
     @FXML
     private TextField tfSearch;
 
-    private List<Customer> customerList;
-    private Customer selectedCustomer;
-    private ObservableList<Customer> customerObservableList;
+    private List<Customer> customerList; //List of customers from database
+    private Customer selectedCustomer; //Selected customer from tableview
+    private ObservableList<Customer> customerObservableList; //Observable list for the customers
     private boolean isAllowed; //check if search is allowed to prevent multiple database calls
     
     /**
@@ -86,7 +81,7 @@ public class CustomerController implements Initializable {
                 
             }
         });
-        //set isAllowed to true
+        //set isAllowed to true to allow search
         isAllowed = true;
         
         //Add listener to search textfield
@@ -114,14 +109,15 @@ public class CustomerController implements Initializable {
         
         
     }
+    //clear search textfield
     @FXML
     private void clearSearch(ActionEvent event) {
         tfSearch.clear();
     }
-    
+
+    //go to create customer view
     @FXML
     private void goToCreateCustomer(){
         QProperty.setBorderCenter("createCustomer");
-        
     }
 }

@@ -22,14 +22,16 @@ import qpims.model.User;
  */
 public class QProperty extends Application {
 
-    private static Scene scene;
-    private static BorderPane sharedBorderPane;
+    private static Scene scene; // The main scene of the application
+    private static BorderPane sharedBorderPane; // The shared border pane to display the center view
+
+    // Start the application
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("view/login"), 1000, 600);
+        scene = new Scene(loadFXML("view/login"), 1000, 600); // Load the login view
         stage.setScene(scene);
-        stage.setTitle("QProperty Information Management System");
-        stage.setResizable(false);
+        stage.setTitle("QProperty Information Management System"); // Set the title of the stage
+        stage.setResizable(false); // Disable resizing of the stage
         // Handle the close request
         stage.setOnCloseRequest(event -> {
             Platform.exit();
@@ -37,21 +39,24 @@ public class QProperty extends Application {
         });
         stage.show();
     }
-
+    // Load the FXML file and set it as the root of the scene
     public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 
+    // Load the FXML file and return the parent node
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(QProperty.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
+    // Main method to launch the application
     public static void main(String[] args) {
         launch();
     }
     //Takes in fxml file name and references a border pane from main view to change/display the center view.
     public static  void setBorderCenter(String fileName){
+        //Load the fxml file and set it as the center of the shared border pane
         try {
             Pane view;
             FXMLLoader loader = new FXMLLoader(QProperty.class.getResource("view/"+fileName+".fxml"));
@@ -61,7 +66,8 @@ public class QProperty extends Application {
             Logger.getLogger(QProperty.class.getName()).log(Level.SEVERE, "Failed to load view "+fileName, ex);
         }
     }
-    
+
+    //Takes in fxml file name and object to send to the controller of the fxml file
     public  static <T> void sendDataToController(String fileName, T object){
         try {
             Pane view;
@@ -83,7 +89,7 @@ public class QProperty extends Application {
             throw new RuntimeException(e);
         }
     }
-    
+
     public static void setSharedBorderPane(BorderPane pane){
         sharedBorderPane = pane;
     }

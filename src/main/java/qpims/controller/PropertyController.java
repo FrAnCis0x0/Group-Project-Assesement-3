@@ -20,6 +20,7 @@ import qpims.model.Validate;
 
 public class PropertyController implements Initializable {
 
+    // FXML variables for the UI components
     @FXML
     private TableView<Property> tbDisplay;
     @FXML
@@ -38,10 +39,11 @@ public class PropertyController implements Initializable {
     @FXML
     private TextField tfSearch;
 
-    private List<Property> propertyList;
-    private Property selectedProperty;
-    private ObservableList<Property> propertyObservableList;
-    private boolean isAllowed;
+
+    private List<Property> propertyList; // List of properties from database
+    private Property selectedProperty; // Selected property from tableview
+    private ObservableList<Property> propertyObservableList; // Observable list for the properties
+    private boolean isAllowed; // Boolean to check if search is allowed
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -64,52 +66,53 @@ public class PropertyController implements Initializable {
         // Create observable list
         propertyObservableList = FXCollections.observableArrayList();
 
-        // Get all properties from database
-        propertyList = QPropertyDAO.getInstance().getAllProperty();
-        propertyObservableList.addAll(propertyList);
+        propertyList = QPropertyDAO.getInstance().getAllProperty(); // Get all properties from database
+        propertyObservableList.addAll(propertyList); // Add all properties to observable list
 
-        // Set tableview items
+        // Set tableview items to observable list
         tbDisplay.setItems(propertyObservableList);
 
         // Get selected property from tableview
         tbDisplay.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            // Check if new selection is not null
             if (newSelection != null) {
                 selectedProperty = newSelection; // Set selected property
-                // Send selected property to property details controller
-                QProperty.sendDataToController("propertyDetails", selectedProperty);
+                QProperty.sendDataToController("propertyDetails", selectedProperty); // Send selected property to propertyDetails
             }
         });
 
-        // Set isAllowed to true
+        // Set isAllowed to true to allow search
         isAllowed = true;
 
         // Add listener to search textfield
         tfSearch.textProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.isEmpty()) {
                 if (isAllowed) {
-                    propertyObservableList.clear();
-                    propertyObservableList.addAll(QPropertyDAO.getInstance().getAllProperty());
-                    isAllowed = false;
+                    propertyObservableList.clear(); // Clear observable list
+                    propertyObservableList.addAll(QPropertyDAO.getInstance().getAllProperty()); // Add all properties to observable list
+                    isAllowed = false; // Set isAllowed to false to prevent multiple database calls
                 }
             } else {
                 // Validate search input
                 if (!Validate.getInstance().validateSearchInput(newValue)) {
                     tfSearch.clear();
-                    return;
+                    return; // If the input is invalid, clear the textfield and return
                 }
                 // Search property by address
                 propertyObservableList.clear();
                 propertyObservableList.addAll(QPropertyDAO.getInstance().searchPropertyByAddress(newValue));
-                isAllowed = true;
+                isAllowed = true; // Set isAllowed to true to allow search
             }
         });
     }
 
+    // Clear search textfield
     @FXML
     private void clearSearch(ActionEvent event) {
         tfSearch.clear();
     }
 
+    // Go to create property view
     @FXML
     private void goToCreateProperty() {
         QProperty.setBorderCenter("createProperty");

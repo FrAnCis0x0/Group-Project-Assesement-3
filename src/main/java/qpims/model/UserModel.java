@@ -8,25 +8,31 @@ import java.util.logging.Logger;
 
 public class UserModel implements IUser {
     private final Connection connection;
+    // Prepared statements for queries
     private PreparedStatement insertUser;
     private PreparedStatement selectUserByUsernameAndPassword;
     private PreparedStatement selectUserByUsername;
-    
-    
-    
+
+    // Constructor to initialize the prepared statements for the queries
     public UserModel(Connection connection) {
         this.connection = connection;
         try {
+            // Create a query to insert a new user into the user table
             insertUser = connection.prepareStatement("INSERT INTO user (first_name, last_name, email, username, password) VALUES (?, ?, ?, ?, ?)");
+            // Create a query to select a user by username and password
             selectUserByUsernameAndPassword = connection.prepareStatement("SELECT * FROM user WHERE username = ? AND password = ?");
+            // Create a query to select a user by username
             selectUserByUsername = connection.prepareStatement("SELECT * FROM user WHERE username = ?");
         } catch (SQLException ex) {
-            System.out.println("Database does not exist!!");
+            System.out.println("Database does not exist!!"); //log error message
         }
     }
+
+    // Add a new user to the user table
     @Override
     public void addUser(String firstName, String lastName, String email, String username, String password) {
         try {
+            // Insert a new entry into the user table
             insertUser.setString(1, firstName);
             insertUser.setString(2, lastName);
             insertUser.setString(3, email);
@@ -38,26 +44,29 @@ public class UserModel implements IUser {
         }
     }
 
+    // Check if a user exists by username
     @Override
     public boolean userExists(String name) {
         try {
-            selectUserByUsername.setString(1, name);
-            ResultSet rs = selectUserByUsername.executeQuery();
-            return rs.next();
+            selectUserByUsername.setString(1, name); //set the username to search for in the query
+            ResultSet rs = selectUserByUsername.executeQuery(); //execute the query
+            return rs.next(); //return true if user exists
         } catch (SQLException ex) {
             Logger.getLogger(UserModel.class.getName()).log(Level.SEVERE, "Failed to check if user exists", ex);
         }
         return false;
     }
 
+    // Get a user by username and password
     @Override
     public User getUserByUsernameAndPassword(String username, String password) {
     
         try {
-            selectUserByUsernameAndPassword.setString(1, username);
-            selectUserByUsernameAndPassword.setString(2, getSha256Hash(password));
+            selectUserByUsernameAndPassword.setString(1, username); //set the username to search for in the query
+            selectUserByUsernameAndPassword.setString(2, getSha256Hash(password)); //set the password to search for in the query
             ResultSet rs = selectUserByUsernameAndPassword.executeQuery();
             if (rs.next()) {
+                //create a new user object and set the values from the result set
                 User user = new User();
                 user.setFirstName(rs.getString("first_name"));
                 user.setLastName(rs.getString("last_name"));
@@ -97,7 +106,7 @@ public class UserModel implements IUser {
         } catch (NoSuchAlgorithmException e) {
             Logger.getLogger(UserModel.class.getName()).log(Level.SEVERE, "Failed to generate hash", e);
         }
-        return "";
+        return ""; //return empty string if hash generation fails
     }
     
 }

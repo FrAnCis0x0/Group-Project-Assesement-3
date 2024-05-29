@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 
 public class CustomerDetailsController implements Initializable {
     
-
+    // FXML variables for the UI components
     @FXML
     private TextField tfFirstName;
     @FXML
@@ -76,6 +76,7 @@ public class CustomerDetailsController implements Initializable {
         
         
     }
+    //set the data of the selected customer
     public void setData(Customer customer) {
         selectedCustomer = customer;
         tfFirstName.setText(selectedCustomer.getFirstName());

@@ -19,7 +19,7 @@ import qpims.model.QPropertyDAO;
 import qpims.model.Validate;
 
 public class CreatePropertyController implements Initializable {
-
+    // FXML variables for UI elements
     @FXML
     private TextField tfAddress;
     @FXML
@@ -36,6 +36,7 @@ public class CreatePropertyController implements Initializable {
     private QPropertyDAO dao;
     private ObservableList<Customer> customerObservableList;
 
+    // Initialize the controller class
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         dao = QPropertyDAO.getInstance();
@@ -43,20 +44,23 @@ public class CreatePropertyController implements Initializable {
         // Populate the property type ComboBox with enum values
         cbPropertyType.setItems(FXCollections.observableArrayList(PropertyType.values()));
 
-        // Initialize the customer ComboBox
+        // Initialize the customer ComboBox with all customers
         customerObservableList = FXCollections.observableArrayList();
         List<Customer> customerList = dao.getAllCustomers();
+        // Add the customers to the observable list if they are not null
         if (customerList != null) {
             customerObservableList.addAll(customerList);
         }
         cbAssociatedCustomer.setItems(customerObservableList);
     }
 
+    // Go back to the property view
     @FXML
     private void goToPropertyView(ActionEvent event) {
         QProperty.setBorderCenter("property");
     }
 
+    // Create a new property and add to the database
     @FXML
     private void createProperty(ActionEvent event) {
         // Validate inputs using the Validate class
@@ -71,8 +75,8 @@ public class CreatePropertyController implements Initializable {
             return;
         }
 
-        Customer associatedCustomer = cbAssociatedCustomer.getValue();
-        int customerId = associatedCustomer.getCustomerId();
+        Customer associatedCustomer = cbAssociatedCustomer.getValue(); // Get the selected customer
+        int customerId = associatedCustomer.getCustomerId(); // Get the customer ID from the selected customer
         dao.addProperty(
                 tfAddress.getText(),
                 tfDescription.getText(),
@@ -81,18 +85,15 @@ public class CreatePropertyController implements Initializable {
                 cbPropertyType.getValue(),
                 customerId
         );
-
-        // Show success message
-        MessageBox.getInstance().showInfo("Property created successfully.");
-        // Clear input fields
-        clearInputs();
+        MessageBox.getInstance().showInfo("Property created successfully."); // Show success message
+        clearInputs(); // Clear inputs after successful creation
     }
 
+    // Clear all input fields
     @FXML
     private void clear(ActionEvent event) {
         clearInputs();
     }
-
     private void clearInputs() {
         tfAddress.clear();
         tfDescription.clear();

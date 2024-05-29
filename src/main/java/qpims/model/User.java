@@ -1,14 +1,17 @@
 package qpims.model;
 
 public class User {
+    // Variables to store user information
     private int userId;
     private String firstName;
     private String lastName;
     private String email;
     private String username;
     private String password;
-    
+
+    //Default constructor
     public User() {}
+    //Constructor with parameters
     public User(String firstName, String lastName, String email, String username, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -16,7 +19,7 @@ public class User {
         this.username = username;
         this.password = password;
     }
-
+    //Getters and setters
     public int getUserId() {
         return userId;
     }
