@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qpims.controller.MainController">
+<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qpims.controller.MainController">
    <top>
       <HBox prefHeight="50.0" prefWidth="1000.0" BorderPane.alignment="CENTER_RIGHT">
          <children>
@@ -52,6 +52,11 @@
                      </font>
                   </Button>
                   <Button fx:id="btnManagerReport" mnemonicParsing="false" onAction="#gotoManagerReportView" prefHeight="50.0" prefWidth="200.0" text="Manager Report">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnAbout" mnemonicParsing="false" onAction="#gotoAboutView" prefHeight="50.0" prefWidth="200.0" text="About">
                      <font>
                         <Font size="14.0" />
                      </font>

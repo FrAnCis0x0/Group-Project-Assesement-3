@@ -11,9 +11,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import qpims.QProperty;
 
 /**
@@ -32,6 +35,8 @@ public class MainController implements Initializable {
     private Button btnRepairJob;
     @FXML
     private Button btnManagerReport;
+    @FXML
+    private Button btnAbout;
     
     
     @FXML
@@ -69,6 +74,21 @@ public class MainController implements Initializable {
         //change center to manager report
         mainPane.setCenter(getView("managerReport"));
     }
+
+    @FXML
+    private void gotoAboutView() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/qpims/view/about.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("About Application");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private Pane getView(String fileName){
         Pane view = null;
         try{
