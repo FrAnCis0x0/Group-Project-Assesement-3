@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="718.0" prefWidth="1201.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qpims.controller.AboutController">
+   <children>
+      <VBox alignment="TOP_CENTER" AnchorPane.bottomAnchor="-103.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="About Application">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Text>
+            <Pane prefHeight="29.0" prefWidth="800.0" />
+            <GridPane gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="1051.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="329.0" minWidth="10.0" prefWidth="205.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="870.0" minWidth="10.0" prefWidth="846.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints maxHeight="252.0" minHeight="-Infinity" prefHeight="41.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="325.0" prefHeight="41.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="346.0" minHeight="-Infinity" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="330.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="333.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="328.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="329.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="329.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="329.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="329.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="329.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="329.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="329.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="329.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="329.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="329.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label prefHeight="35.0" prefWidth="188.0" text="    Function">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="35.0" prefWidth="876.0" text="                                                       Instructions  " GridPane.columnIndex="1">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label contentDisplay="CENTER" prefHeight="35.0" prefWidth="180.0" text="      Add Customer" textAlignment="CENTER" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="40.0" prefWidth="183.0" text="     Update Customer" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="35.0" prefWidth="180.0" text="     Delete Customer" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="35.0" prefWidth="180.0" text="     Search Customer" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="35.0" prefWidth="180.0" text="       Add Property" GridPane.rowIndex="5">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="26.0" prefWidth="178.0" text="     Update Property" GridPane.rowIndex="6">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="35.0" prefWidth="180.0" text="      Delete Property" GridPane.rowIndex="7">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="35.0" prefWidth="180.0" text="     Search Property" GridPane.rowIndex="8">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="35.0" prefWidth="180.0" text="     Add Repair Job" GridPane.rowIndex="9">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="35.0" prefWidth="180.0" text="    Update Repair Job" GridPane.rowIndex="10">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="173.0" text="     Delete Repair Job" GridPane.rowIndex="11">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="26.0" prefWidth="181.0" text="     Search Repair Job" GridPane.rowIndex="12">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="230.0" text="    View Manager Report" GridPane.rowIndex="13">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Go to Customer View from side buttons. Press Add customer, Input all the required fields and press create. Clear buttons clears all fields. Customer is now added with a associated CustomerID. " textAlignment="CENTER" wrappingWidth="849.263671875" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Select a customer from results tab, which opens a new view where any Customer details can be updated. Make required changes and press update. All fields are required." textAlignment="CENTER" wrappingWidth="850.263671875" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="From the update customer view, the customer can be deleted from the system." textAlignment="CENTER" wrappingWidth="872.263671875" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="From the main Customer View, Search a customer by phone or name which will return the associated customer. Results will appear empty if no customer is found. Press clear to clear input and return all customers." textAlignment="CENTER" wrappingWidth="847.263671875" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Go to Property View from side buttons. Press Add customer, Input all the required fields and press create. Clear buttons clears all fields. A customer must be associated with a property. Property is now added with a associated PropertyID." textAlignment="CENTER" wrappingWidth="844.263671875" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Select a property from results tab, which opens a new view where any property details can be updated. Make required changes and press update. All fields are required." textAlignment="CENTER" wrappingWidth="858.263671875" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="From the update property view, the property can be deleted from the system." textAlignment="CENTER" wrappingWidth="872.263671875" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" From the main Property View, Search a property by address which will return the associated property. Results will appear empty if no property is found. Press clear to clear input and return all properties." textAlignment="CENTER" wrappingWidth="847.263671875" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Go to Repair Job View from side buttons. Press Add Repair Job , Input all the required fields and press create. Clear buttons clears all fields. A property must be associated with a repair job. Repair job is now added with a associated RepairJobID." textAlignment="CENTER" wrappingWidth="847.263671875" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select a repair Job from results tab, which opens a new view where any repair job details can be updated. Make required changes and press update. All fields are required." textAlignment="CENTER" wrappingWidth="847.263671875" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="From the update repair job view, the repair job can be deleted from the system." textAlignment="CENTER" wrappingWidth="872.263671875" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="From the main Repair Job View, Search a repair job by address which will return the associated repair job. Results will appear empty if no repair job is found. Press clear to clear input and return all repair jobs." textAlignment="CENTER" wrappingWidth="845.263671875" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" From the side buttons access the Manager report View which includes vital statistical data such as charges and distribution of completed jobs." textAlignment="CENTER" wrappingWidth="844.263671875" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="182.0" text="               Back" GridPane.rowIndex="14">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="182.0" text="                Exit" GridPane.rowIndex="15">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pressing Back on any view will go back to the previous view." textAlignment="CENTER" wrappingWidth="873.263671875" GridPane.columnIndex="1" GridPane.rowIndex="14">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pressing Exit will exit the application and return to the log in view." textAlignment="CENTER" wrappingWidth="873.263671875" GridPane.columnIndex="1" GridPane.rowIndex="15">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
