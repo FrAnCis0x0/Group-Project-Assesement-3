@@ -30,6 +30,7 @@
             <AnchorPane prefHeight="66.0" prefWidth="800.0">
                <children>
                   <TextField fx:id="tfSearch" alignment="CENTER" layoutX="286.0" layoutY="14.0" prefHeight="38.0" prefWidth="230.0" promptText="search..." />
+                  <Button layoutX="516.0" layoutY="14.0" mnemonicParsing="false" onAction="#clearSearch" prefHeight="38.0" prefWidth="108.0" text="Clear" />
                </children>
             </AnchorPane>
             <Pane prefHeight="55.0" prefWidth="800.0" />
@@ -48,10 +49,10 @@
                      <columns>
                         <TableColumn fx:id="colId" prefWidth="38.0" text="ID" />
                         <TableColumn fx:id="colAddress" prefWidth="220.0" text="Address" />
-                        <TableColumn fx:id="colDescription" minWidth="0.0" prefWidth="208.0" text="Desciption" />
-                        <TableColumn fx:id="colBuiltYear" prefWidth="77.0" text="Built Year" />
-                        <TableColumn fx:id="colAgentName" prefWidth="127.0" text="Agent Name" />
-                        <TableColumn fx:id="colPropertyType" prefWidth="109.0" text="Property Type" />
+                        <TableColumn fx:id="colDescription" minWidth="0.0" prefWidth="186.0" text="Desciption" />
+                        <TableColumn fx:id="colBuiltYear" prefWidth="99.0" text="Built Year" />
+                        <TableColumn fx:id="colAgentName" prefWidth="109.0" text="Agent Name" />
+                        <TableColumn fx:id="colPropertyType" prefWidth="127.0" text="Property Type" />
                      </columns>
                   </TableView>
                </children>
