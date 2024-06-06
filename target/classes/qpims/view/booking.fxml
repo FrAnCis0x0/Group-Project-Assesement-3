@@ -30,6 +30,7 @@
             <AnchorPane prefHeight="66.0" prefWidth="800.0">
                <children>
                   <TextField fx:id="tfSearch" alignment="CENTER" layoutX="286.0" layoutY="14.0" prefHeight="38.0" prefWidth="230.0" promptText="Enter Address" />
+                  <Button layoutX="516.0" layoutY="13.0" mnemonicParsing="false" onAction="#clearSearch" prefHeight="40.0" prefWidth="108.0" text="Clear" />
                </children>
             </AnchorPane>
             <Pane prefHeight="55.0" prefWidth="800.0" />

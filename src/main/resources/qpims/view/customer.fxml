@@ -27,6 +27,7 @@
                   <Font size="14.0" />
                </font>
             </Text>
+            <Pane prefHeight="43.0" prefWidth="800.0" />
             <AnchorPane prefHeight="66.0" prefWidth="800.0">
                <children>
                   <HBox alignment="CENTER" layoutX="286.0" layoutY="14.0" prefHeight="52.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

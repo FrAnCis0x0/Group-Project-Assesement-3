@@ -21,7 +21,7 @@ public class Validate {
 			return false;
 		}
 		//make sure search input is only letters and numbers
-		if(!searchInput.matches("^[a-zA-Z0-9]*$")) {
+		if(!searchInput.matches("^[a-zA-Z0-9 ]*$")) {
 			MessageBox.getInstance().showWarning("Search input must only contain alphabet characters and numbers.");
 			return false;
 		}
@@ -64,11 +64,12 @@ public class Validate {
 			MessageBox.getInstance().showWarning("Year must contain numbers and be 4-digit.");
 			return false;
 		}
-		//check if agent name is only letters
-		if(!agentName.matches("^[a-zA-Z]*$")) {
-			MessageBox.getInstance().showWarning("Agent name must only contain alphabet characters.");
+		// Check if agent name is only letters and contains a space
+		if(!agentName.matches("^[a-zA-Z ]*$")) {
+			MessageBox.getInstance().showWarning("Agent name must only contain alphabet characters and a space.");
 			return false;
 		}
+
 		//check if address is only letters and numbers and spaces and commas and /
 		if(!address.matches("^[a-zA-Z0-9 ,/]*$")) {
 			MessageBox.getInstance().showWarning("Address must only contain alphabet characters, numbers, spaces, commas,and /.");
@@ -96,7 +97,7 @@ public class Validate {
 			return false;
 		}
 		//check if staff name is only letters
-		if(!staffName.matches("^[a-zA-Z]*$")) {
+		if(!staffName.matches("^[a-zA-Z ]*$")) {
 			MessageBox.getInstance().showWarning("Staff name must only contain alphabet characters.");
 			return false;
 		}

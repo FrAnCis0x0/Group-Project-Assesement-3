@@ -8,10 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import qpims.QProperty;
 import qpims.model.Booking;
@@ -59,6 +56,42 @@ public class BookingDetailsController implements Initializable {
             propertyObservableList.addAll(propertyList);
         }
         cbPropertyID.setItems(propertyObservableList);
+
+        // Open the DatePicker's calendar when the user clicks on the DatePicker
+        dpBookingDate.getEditor().setOnMouseClicked(event -> dpBookingDate.show());
+
+        // Add a listener to the showing property of dpCompletionDate
+        dpCompletionDate.showingProperty().addListener((obs, wasShowing, isNowShowing) -> {
+            if (isNowShowing) {
+                // Show error message if booking date is not selected
+                if (dpBookingDate.getValue() == null || dpBookingDate.getEditor().getText().isEmpty()) {
+                    MessageBox.getInstance().showError("Please select a booking date first.");
+                    dpCompletionDate.hide(); // Hide the completion date picker
+                }
+            }
+        });
+
+        // Add a listener to the mouse click event of dpCompletionDate's editor
+        dpCompletionDate.getEditor().setOnMouseClicked(event -> {
+            // Show error message if booking date is not selected
+            if (dpBookingDate.getValue() == null || dpBookingDate.getEditor().getText().isEmpty()) {
+                MessageBox.getInstance().showError("Please select a booking date first.");
+                dpCompletionDate.hide(); // Hide the completion date picker
+            } else {
+                dpCompletionDate.show(); // Show the completion date picker
+            }
+        });
+
+        dpCompletionDate.setDayCellFactory(picker -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                LocalDate bookingDate = dpBookingDate.getValue();
+                // Disable the date cell if it is empty, or if the booking date is null or the date is before the booking date
+                setDisable(empty || bookingDate == null || date.compareTo(bookingDate) < 0);
+            }
+        });
+
     }
 
     // Go back to the repair job view

@@ -131,10 +131,10 @@ public class BookingController implements Initializable {
         ObservableList<Booking> currentItems = tbDisplay.getItems();
         tbDisplay.setItems(null);
         tbDisplay.setItems(currentItems);
-        
+
         // Ensure layout is properly updated
         tbDisplay.layout();
-        
+
         // Scroll to the top-left corner to ensure proper display
         tbDisplay.scrollTo(0);
         tbDisplay.scrollToColumnIndex(0);
