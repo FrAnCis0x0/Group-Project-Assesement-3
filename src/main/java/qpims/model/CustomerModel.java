@@ -24,6 +24,7 @@ public class CustomerModel implements ICustomer {
             // Create a query to search for a customer by name or phone number
             selectCustomerByNameOrPhone = connection.prepareStatement("SELECT * FROM customer WHERE first_name LIKE ? OR last_name LIKE ? OR phone_number LIKE ?");
             // Create a query to get all customers from the customer table
+            
             getAllCustomers = connection.prepareStatement("SELECT * FROM customer");
             // Create a query that deletes a customer by customer id from the customer table.
             deleteCustomerById = connection.prepareStatement("DELETE FROM customer WHERE customer_id = ?");

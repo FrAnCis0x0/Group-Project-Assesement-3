@@ -83,7 +83,12 @@ public class MainController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("About Application");
             stage.setScene(new Scene(root));
+            stage.setAlwaysOnTop(true);
             stage.show();
+            // Pass the stage instance to the AboutController
+            AboutController aboutController = fxmlLoader.getController();
+            aboutController.setAboutStage(stage);
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
