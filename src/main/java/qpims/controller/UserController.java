@@ -69,8 +69,14 @@ public class UserController implements Initializable {
             MessageBox.getInstance().showError("Invalid email address. Email must be in the format example@example.com.");
             return false;
         }
+
         if(!tfUsername.getText().matches("^[a-zA-Z0-9_]{5,20}$")){
             MessageBox.getInstance().showError("Invalid username. Username must be between 5 and 20 characters.");
+            return false;
+        }
+        //validate unique username with userExists
+        if(dao.userExists(tfUsername.getText())){
+            MessageBox.getInstance().showError("Username already exists. Please choose another username.");
             return false;
         }
 
@@ -79,6 +85,17 @@ public class UserController implements Initializable {
             MessageBox.getInstance().showError("Invalid password. Password must be at least 5 characters.");
             return false;
         }
+        //password must contain at least one number
+        if(!tfPassword.getText().matches(".*\\d.*")){
+            MessageBox.getInstance().showError("Invalid password. Password must contain at least one number.");
+            return false;
+        }
+        //password must contain at least one Capital letter or character
+        if(!tfPassword.getText().matches(".*[A-Z].*")){
+            MessageBox.getInstance().showError("Invalid password. Password must contain at least one capital letter.");
+            return false;
+        }
+
         return true;
     }
     //clear the input fields

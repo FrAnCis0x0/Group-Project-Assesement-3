@@ -119,7 +119,7 @@
                         <Font name="System Bold" size="17.0" />
                      </font>
                   </Label>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Go to Customer View from side buttons. Press Add customer, Input all the required fields and press create. Clear buttons clears all fields. Customer is now added with a associated CustomerID. " textAlignment="CENTER" wrappingWidth="849.263671875" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Go to Customer View from side buttons. Press Add customer, Input all the required fields and press create. Clear buttons clears all fields. Customer is now added with a associated CustomerID. " textAlignment="CENTER" wrappingWidth="843.263671875" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -144,7 +144,7 @@
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Select a property from results tab, which opens a new view where any property details can be updated. Make required changes and press update. All fields are required." textAlignment="CENTER" wrappingWidth="858.263671875" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Select a property from results tab, which opens a new view where any property details can be updated. Make required changes and press update. All fields are required." textAlignment="CENTER" wrappingWidth="846.263671875" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -154,7 +154,7 @@
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" From the main Property View, Search a property by address which will return the associated property. Results will appear empty if no property is found. Press clear to clear input and return all properties." textAlignment="CENTER" wrappingWidth="847.263671875" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" From the main Property View, Search a property by address which will return the associated property. Results will appear empty if no property is found. Press clear to clear input and return all properties." textAlignment="CENTER" wrappingWidth="845.263671875" GridPane.columnIndex="1" GridPane.rowIndex="8">
                      <font>
                         <Font size="15.0" />
                      </font>
