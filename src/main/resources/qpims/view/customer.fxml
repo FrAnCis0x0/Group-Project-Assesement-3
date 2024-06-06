@@ -50,13 +50,14 @@
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="350.0" prefWidth="800.0">
                <children>
-                  <TableView fx:id="tbDisplay" prefHeight="350.0" prefWidth="612.0">
+                  <TableView fx:id="tbDisplay" prefHeight="326.0" prefWidth="744.0">
                      <columns>
                         <TableColumn fx:id="colId" prefWidth="34.0" text="ID" />
                         <TableColumn fx:id="colFirstName" prefWidth="136.0" text="First Name" />
                         <TableColumn fx:id="colLastName" prefWidth="126.0" text="Last Name" />
                         <TableColumn fx:id="colPhone" prefWidth="115.0" text="Phone" />
-                        <TableColumn fx:id="colEmail" prefWidth="200.0" text="Email" />
+                        <TableColumn fx:id="colEmail" prefWidth="165.0" text="Email" />
+                        <TableColumn fx:id="colAssociatedAddress" prefWidth="167.0" text="Associated Address" />
                      </columns>
                      <cursor>
                         <Cursor fx:constant="HAND" />

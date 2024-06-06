@@ -9,4 +9,5 @@ public interface IProperty {
     public List<Property> getAllProperty(); //return a list of all properties in the property table
     public void updateProperty(int propertyId, String address, String description, String year, String agentName, PropertyType propertyType, int customerId); //update a property's information in the property table
     public void deletePropertyById(int propertyId); //delete a property by property id from the property table
+    public String getPropertyAddressById(int propertyId); //get the address of a property by property id
 }

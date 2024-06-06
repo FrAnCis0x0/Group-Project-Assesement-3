@@ -89,6 +89,12 @@ public class QPropertyDAO implements ICustomer, IProperty, IBooking, IUser {
     public void deletePropertyById(int propertyId) {
         propertyModel.deletePropertyById(propertyId);
     }
+    
+    @Override
+    public String getPropertyAddressById(int propertyId) {
+        return propertyModel.getPropertyAddressById(propertyId);
+    }
+    
     // Method to add a new booking to the booking table
     @Override
     public void addBooking(int propertyId, String description, String bookingDate, String completionDate, double charge, String staffName, JobType jobType) {

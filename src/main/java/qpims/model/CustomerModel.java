@@ -22,10 +22,12 @@ public class CustomerModel implements ICustomer {
             // Create a query to insert a new customer into the customer table
             insertCustomer = connection.prepareStatement("INSERT INTO customer (first_name, last_name, email, phone_number) VALUES (?, ?, ?, ?)");
             // Create a query to search for a customer by name or phone number
-            selectCustomerByNameOrPhone = connection.prepareStatement("SELECT * FROM customer WHERE first_name LIKE ? OR last_name LIKE ? OR phone_number LIKE ?");
+            selectCustomerByNameOrPhone = connection.prepareStatement("Select customer.customer_id, customer.first_name, customer.last_name, customer.email, customer.phone_number, property.address\n" +
+                    "from customer inner join property on customer.customer_id = property.customer_id WHERE first_name LIKE ? OR last_name LIKE ? OR phone_number LIKE ?");
             // Create a query to get all customers from the customer table
             
-            getAllCustomers = connection.prepareStatement("SELECT * FROM customer");
+            getAllCustomers = connection.prepareStatement("SELECT customer.customer_id, customer.first_name, customer.last_name, customer.phone_number, customer.email, property.address\n" +
+                    "From customer join property on customer.customer_id = property.customer_id;");
             // Create a query that deletes a customer by customer id from the customer table.
             deleteCustomerById = connection.prepareStatement("DELETE FROM customer WHERE customer_id = ?");
             // Create a query that updates a customer's information in customer table by customer id
@@ -68,6 +70,7 @@ public class CustomerModel implements ICustomer {
                 customer.setLastName(rs.getString("last_name"));
                 customer.setEmail(rs.getString("email"));
                 customer.setPhone(rs.getString("phone_number"));
+                customer.setAssociatedAddress(rs.getString("address"));
                 customers.add(customer);
             }
             return customers;
@@ -90,6 +93,7 @@ public class CustomerModel implements ICustomer {
                 customer.setLastName(rs.getString("last_name"));
                 customer.setEmail(rs.getString("email"));
                 customer.setPhone(rs.getString("phone_number"));
+                customer.setAssociatedAddress(rs.getString("address"));
                 customers.add(customer);
             }
             return customers;

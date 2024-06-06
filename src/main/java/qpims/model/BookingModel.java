@@ -90,6 +90,7 @@ public class BookingModel implements IBooking {
                 booking.setCharge(resultSet.getDouble("charge"));
                 booking.setStaffName(resultSet.getString("staff_name"));
                 booking.setJobType(JobType.fromMySQLName(resultSet.getString("job_type")));
+                booking.setAssociatedAddress(QPropertyDAO.getInstance().getPropertyAddressById(resultSet.getInt("property_id")));
                 bookings.add(booking);
             }
             return bookings;
@@ -118,6 +119,8 @@ public class BookingModel implements IBooking {
                 booking.setCharge(resultSet.getDouble("charge"));
                 booking.setStaffName(resultSet.getString("staff_name"));
                 booking.setJobType(JobType.fromMySQLName(resultSet.getString("job_type")));
+                booking.setAssociatedAddress(QPropertyDAO.getInstance().getPropertyAddressById(booking.getPropertyId()));
+                
                 bookings.add(booking);
             }
             return bookings;

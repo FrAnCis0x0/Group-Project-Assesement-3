@@ -73,7 +73,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Text>
-                                    <DatePicker fx:id="dpBookingDate" prefHeight="38.0" prefWidth="228.0" promptText="Select Date" />
+                                    <DatePicker fx:id="dpBookingDate" editable="false" prefHeight="38.0" prefWidth="228.0" promptText="Select Date" />
                                  </children>
                               </VBox>
                            </children>
@@ -87,7 +87,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Text>
-                                    <DatePicker fx:id="dpCompletionDate" prefHeight="38.0" prefWidth="228.0" promptText="Select Date" />
+                                    <DatePicker fx:id="dpCompletionDate" editable="false" prefHeight="38.0" prefWidth="228.0" promptText="Select Date" />
                                  </children>
                               </VBox>
                            </children>

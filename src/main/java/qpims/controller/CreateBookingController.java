@@ -1,16 +1,14 @@
 package qpims.controller;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import qpims.QProperty;
 import qpims.model.JobType;
@@ -57,6 +55,40 @@ public class CreateBookingController implements Initializable {
         // Initialize the job type ComboBox with enum values
         jobTypeObservableList = FXCollections.observableArrayList(JobType.values());
         cbJobType.setItems(jobTypeObservableList);
+    
+        // Open the DatePicker's calendar when the user clicks on the DatePicker
+        dpBookingDate.getEditor().setOnMouseClicked(event -> dpBookingDate.show());
+    
+        dpCompletionDate.getEditor().setOnMouseClicked(event -> {
+            //return error message if booking date is not selected
+            if(dpBookingDate.getValue() == null || dpBookingDate.getEditor().getText() == null){
+                MessageBox.getInstance().showError("Please select a booking date first.");
+                return;
+            }
+            dpCompletionDate.show();
+        });
+        
+    
+        dpCompletionDate.setOnShowing(event -> {
+            
+            //return error message if booking date is not selected
+            if(dpBookingDate.getValue() == null || dpBookingDate.getEditor().getText() == null){
+                MessageBox.getInstance().showError("Please select a booking date first.");
+                event.consume(); // Prevent the DatePicker's calendar from being shown
+            }
+            //select the com
+        });
+    
+        // Set the start date for the completion date DatePicker
+        dpCompletionDate.setDayCellFactory(picker -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                LocalDate bookingDate = dpBookingDate.getValue();
+                // Disable the date cell if it is empty, or if the booking date is null or the date is before the booking date
+                setDisable(empty || bookingDate == null || date.compareTo(bookingDate) < 0 );
+            }
+        });
     }
 
     // Go to the booking view
@@ -71,8 +103,8 @@ public class CreateBookingController implements Initializable {
         // Validate inputs using the Validate class
         if (!Validate.getInstance().validateBooking(
                 taDescription.getText(),
-                dpBookingDate.getValue() != null ? dpBookingDate.getValue().toString() : "",
-                dpCompletionDate.getValue() != null ? dpCompletionDate.getValue().toString() : "",
+                dpBookingDate.getEditor().getText() != null ? dpBookingDate.getValue().toString() : "",
+                dpCompletionDate.getEditor().getText() != null ? dpCompletionDate.getValue().toString() : "",
                 tfCharge.getText(),
                 tfStaffName.getText(),
                 cbJobType.getValue() != null ? cbJobType.getValue().name() : "",

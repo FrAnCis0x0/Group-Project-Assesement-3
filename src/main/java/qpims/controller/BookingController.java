@@ -37,6 +37,8 @@ public class BookingController implements Initializable {
     @FXML
     private TableColumn<Booking, String> colJobType;
     @FXML
+    private TableColumn<Booking, String> colAssociatedAddress;
+    @FXML
     private TextField tfSearch;
 
     private List<Booking> bookingList; // List of bookings from database
@@ -57,6 +59,7 @@ public class BookingController implements Initializable {
         colCharge.setCellValueFactory(new PropertyValueFactory<>("charge"));
         colStaffName.setCellValueFactory(new PropertyValueFactory<>("staffName"));
         colJobType.setCellValueFactory(new PropertyValueFactory<>("jobType"));
+        colAssociatedAddress.setCellValueFactory(new PropertyValueFactory<>("associatedAddress"));
 
         // Center columns
         colJobId.setStyle("-fx-alignment: CENTER;");
@@ -66,6 +69,7 @@ public class BookingController implements Initializable {
         colCharge.setStyle("-fx-alignment: CENTER;");
         colStaffName.setStyle("-fx-alignment: CENTER;");
         colJobType.setStyle("-fx-alignment: CENTER;");
+        colAssociatedAddress.setStyle("-fx-alignment: CENTER;");
 
         // Create observable list for bookings
         bookingObservableList = FXCollections.observableArrayList();
@@ -91,6 +95,7 @@ public class BookingController implements Initializable {
         // Add listener to search textfield
         tfSearch.textProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.isEmpty()) {
+                refreshTableView();
                 if (isAllowed) {
                     bookingObservableList.clear();
                     bookingObservableList.addAll(dao.getAllBookings());
@@ -120,5 +125,18 @@ public class BookingController implements Initializable {
     @FXML
     private void goToCreateBooking() {
         QProperty.setBorderCenter("createBooking");
+    }
+    private void refreshTableView() {
+        // Ensure the table view is properly refreshed
+        ObservableList<Booking> currentItems = tbDisplay.getItems();
+        tbDisplay.setItems(null);
+        tbDisplay.setItems(currentItems);
+        
+        // Ensure layout is properly updated
+        tbDisplay.layout();
+        
+        // Scroll to the top-left corner to ensure proper display
+        tbDisplay.scrollTo(0);
+        tbDisplay.scrollToColumnIndex(0);
     }
 }

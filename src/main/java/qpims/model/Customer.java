@@ -7,6 +7,8 @@ public class Customer {
     private String lastName;
     private String email;
     private String phone;
+    
+    private String associatedAddress;
 
     // Default constructor
     public Customer() {}
@@ -57,6 +59,12 @@ public class Customer {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+    public void setAssociatedAddress(String associatedAddress){
+        this.associatedAddress = associatedAddress;
+    }
+    public String getAssociatedAddress(){
+        return associatedAddress;
     }
 
     // toString method to return customer ID as a string for display purposes in the table view

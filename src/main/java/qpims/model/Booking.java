@@ -12,6 +12,8 @@ public class Booking {
     private double charge;
     private String staffName;
     private JobType jobType;
+    
+    private String associatedAddress;
 
     // Default constructor
     public Booking(){}
@@ -89,6 +91,12 @@ public class Booking {
 
     public void setJobType(JobType jobType) {
         this.jobType = jobType;
+    }
+    public void setAssociatedAddress(String address){
+        this.associatedAddress = address;
+    }
+    public String getAssociatedAddress(){
+        return associatedAddress;
     }
 
 }

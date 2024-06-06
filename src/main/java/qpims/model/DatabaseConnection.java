@@ -16,7 +16,7 @@ public class DatabaseConnection {
     private static String url;
     private DatabaseConnection() {
         //connect to the database
-        url = "jdbc:mysql://localhost/qpimsdb";
+        url = "jdbc:mysql://localhost/propertyservicedb3";
         user = "admin";
         password = "Str0ngP@ssw0rd!!";//this is a weak password :)
         try {

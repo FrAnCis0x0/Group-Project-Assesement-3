@@ -36,6 +36,8 @@ public class CustomerController implements Initializable {
     @FXML
     private TableColumn<Customer, String> colPhone;
     @FXML
+    private TableColumn<Customer, String> colAssociatedAddress;
+    @FXML
     private TextField tfSearch;
 
     private List<Customer> customerList; //List of customers from database
@@ -54,6 +56,7 @@ public class CustomerController implements Initializable {
         colLastName.setCellValueFactory( new PropertyValueFactory<>("lastName"));
         colEmail.setCellValueFactory( new PropertyValueFactory<>("email"));
         colPhone.setCellValueFactory( new PropertyValueFactory<>("phone"));
+        colAssociatedAddress.setCellValueFactory( new PropertyValueFactory<>("associatedAddress"));
         
         //center columns
         colId.setStyle("-fx-alignment: CENTER;");
@@ -61,6 +64,7 @@ public class CustomerController implements Initializable {
         colLastName.setStyle("-fx-alignment: CENTER;");
         colEmail.setStyle("-fx-alignment: CENTER;");
         colPhone.setStyle("-fx-alignment: CENTER;");
+        colAssociatedAddress.setStyle("-fx-alignment: CENTER;");
         
         
         //Create observable list

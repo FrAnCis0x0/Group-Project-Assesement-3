@@ -14,6 +14,8 @@ public class PropertyModel implements IProperty {
     private PreparedStatement selectAllProperties;
     private PreparedStatement deletePropertyById;
     private PreparedStatement updateProperty;
+    
+    private PreparedStatement selectPropertyById;
 
     public PropertyModel(Connection connection) {
         this.connection = connection;
@@ -23,6 +25,8 @@ public class PropertyModel implements IProperty {
             insertProperty = connection.prepareStatement("INSERT INTO property (address, description, built_year, agent_name, property_type, customer_id) VALUES (?, ?, ?, ?, ?, ?)");
             // Create query that selects all entries from Property table by address
             selectPropertyByAddress = connection.prepareStatement("SELECT * FROM property WHERE address LIKE ?");
+            // Create query that selects a property with a specific property id
+            selectPropertyById = connection.prepareStatement("SELECT * FROM property WHERE property_id = ?");
             // Create query that selects all entries from Property table
             selectAllProperties = connection.prepareStatement("SELECT * FROM property");
             deletePropertyById = connection.prepareStatement("DELETE FROM property WHERE property_id = ?");
@@ -130,6 +134,19 @@ public class PropertyModel implements IProperty {
         } catch (SQLException ex) {
             Logger.getLogger(PropertyModel.class.getName()).log(Level.SEVERE, "Failed to delete property", ex);
         }
+    }
+    @Override
+    public String getPropertyAddressById(int propertyId) {
+        try {
+            selectPropertyById.setInt(1, propertyId); //set the property id in the query
+            ResultSet rs = selectPropertyById.executeQuery();
+            if (rs.next()) {
+                return rs.getString("address");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PropertyModel.class.getName()).log(Level.SEVERE, "Failed to get property address by id", ex);
+        }
+        return null;
     }
     
 }
