@@ -1,24 +1,16 @@
 package qpims.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import qpims.QProperty;
-import qpims.model.Customer;
 import qpims.model.MessageBox;
 import qpims.model.QPropertyDAO;
 import qpims.model.Validate;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
-
 
 public class CreateCustomerController implements Initializable {
 
@@ -42,29 +34,29 @@ public class CreateCustomerController implements Initializable {
         dao = QPropertyDAO.getInstance();
     }
 
-    //go back to customer view
+    // Go back to customer view
     @FXML
     private void goToCustomerView(ActionEvent event) {
         clearInputs();
         QProperty.setBorderCenter("customer");
     }
 
-    //create a new customer and add to the database
+    // Create a new customer and add to the database
     @FXML
     private void createCustomer(ActionEvent event) {
-        //validate inputs
-        if(!Validate.getInstance().validateCustomer(tfFirstName.getText(), tfLastName.getText(), tfEmail.getText(), tfPhone.getText())){
+        // Validate inputs
+        if (!Validate.getInstance().validateCustomer(tfFirstName.getText(), tfLastName.getText(), tfEmail.getText(), tfPhone.getText())) {
             return;
         }
-        dao.addCustomer(tfFirstName.getText(), tfLastName.getText(), tfEmail.getText(), tfPhone.getText()); //
-        //show success message
+        dao.addCustomer(tfFirstName.getText(), tfLastName.getText(), tfEmail.getText(), tfPhone.getText());
+        // Show success message
         MessageBox.getInstance().showInfo("Customer created successfully.");
         clearInputs();
-        //go back to customer view
+        // Go back to customer view
         QProperty.setBorderCenter("customer");
     }
 
-    //clear the input fields
+    // Clear the input fields
     @FXML
     private void clear() {
         clearInputs();
@@ -76,5 +68,4 @@ public class CreateCustomerController implements Initializable {
         tfEmail.setText("");
         tfPhone.setText("");
     }
-
 }

@@ -22,22 +22,28 @@ public class CustomerModel implements ICustomer {
             // Create a query to insert a new customer into the customer table
             insertCustomer = connection.prepareStatement("INSERT INTO customer (first_name, last_name, email, phone_number) VALUES (?, ?, ?, ?)");
             // Create a query to search for a customer by name or phone number
-            selectCustomerByNameOrPhone = connection.prepareStatement("Select customer.customer_id, customer.first_name, customer.last_name, customer.email, customer.phone_number, property.address\n" +
-                    "from customer inner join property on customer.customer_id = property.customer_id WHERE first_name LIKE ? OR last_name LIKE ? OR phone_number LIKE ?");
+            selectCustomerByNameOrPhone = connection.prepareStatement(
+                    "SELECT customer.customer_id, customer.first_name, customer.last_name, customer.email, customer.phone_number, property.address " +
+                            "FROM customer " +
+                            "LEFT JOIN property ON customer.customer_id = property.customer_id " +
+                            "WHERE first_name LIKE ? OR last_name LIKE ? OR phone_number LIKE ?"
+            );
             // Create a query to get all customers from the customer table
-            
-            getAllCustomers = connection.prepareStatement("SELECT customer.customer_id, customer.first_name, customer.last_name, customer.phone_number, customer.email, property.address\n" +
-                    "From customer join property on customer.customer_id = property.customer_id;");
-            // Create a query that deletes a customer by customer id from the customer table.
+            getAllCustomers = connection.prepareStatement(
+                    "SELECT customer.customer_id, customer.first_name, customer.last_name, customer.phone_number, customer.email, property.address " +
+                            "FROM customer " +
+                            "LEFT JOIN property ON customer.customer_id = property.customer_id"
+            );
+            // Create a query that deletes a customer by customer id from the customer table
             deleteCustomerById = connection.prepareStatement("DELETE FROM customer WHERE customer_id = ?");
-            // Create a query that updates a customer's information in customer table by customer id
+            // Create a query that updates a customer's information in the customer table by customer id
             updateCustomer = connection.prepareStatement("UPDATE customer SET first_name = ?, last_name = ?, email = ?, phone_number = ? WHERE customer_id = ?");
         } catch (SQLException ex) {
-            Logger.getLogger(BookingModel.class.getName()).log(Level.SEVERE, "Database does not exist!!", ex); //log error message
-    
+            Logger.getLogger(CustomerModel.class.getName()).log(Level.SEVERE, "Database does not exist!!", ex); // log error message
         }
     }
-    // add a new customer to customer table
+
+    // Add a new customer to customer table
     @Override
     public void addCustomer(String firstName, String lastName, String email, String phone) {
         try {
@@ -52,17 +58,17 @@ public class CustomerModel implements ICustomer {
         }
     }
 
-    // search for a customer by name or phone number
+    // Search for a customer by name or phone number
     @Override
     public List<Customer> searchCustomerByNameOrPhone(String value) {
         try {
             selectCustomerByNameOrPhone.setString(1, "%" + value + "%");
             selectCustomerByNameOrPhone.setString(2, "%" + value + "%");
             selectCustomerByNameOrPhone.setString(3, "%" + value + "%");
-            ResultSet rs = selectCustomerByNameOrPhone.executeQuery(); //execute the query
-            List<Customer> customers = new ArrayList<>(); //create a list to store the result set
+            ResultSet rs = selectCustomerByNameOrPhone.executeQuery(); // execute the query
+            List<Customer> customers = new ArrayList<>(); // create a list to store the result set
 
-            //loop through the result set and add each entry to the list
+            // Loop through the result set and add each entry to the list
             while (rs.next()) {
                 Customer customer = new Customer();
                 customer.setCustomerId(rs.getInt("customer_id"));
@@ -77,10 +83,10 @@ public class CustomerModel implements ICustomer {
         } catch (SQLException ex) {
             Logger.getLogger(CustomerModel.class.getName()).log(Level.SEVERE, "Failed to search customer", ex);
         }
-        return null; //return null if the search fails
+        return null; // return null if the search fails
     }
 
-    // return a list of all customers in the customer table
+    // Return a list of all customers in the customer table
     @Override
     public List<Customer> getAllCustomers() {
         try {
@@ -103,18 +109,18 @@ public class CustomerModel implements ICustomer {
         return null;
     }
 
-    // delete a customer by customer id from the customer table
+    // Delete a customer by customer id from the customer table
     @Override
     public void deleteCustomerById(int customerId) {
         try {
-            deleteCustomerById.setInt(1, customerId); //set the customer id in the query
+            deleteCustomerById.setInt(1, customerId); // set the customer id in the query
             deleteCustomerById.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(CustomerModel.class.getName()).log(Level.SEVERE, "Failed to delete customer", ex);
         }
     }
 
-    // update a customer's information in the customer table by customer id
+    // Update a customer's information in the customer table by customer id
     @Override
     public void updateCustomer(int customerId, String firstName, String lastName, String email, String phone) {
         try {
@@ -128,5 +134,4 @@ public class CustomerModel implements ICustomer {
             Logger.getLogger(CustomerModel.class.getName()).log(Level.SEVERE, "Failed to update customer", ex);
         }
     }
-    
 }
