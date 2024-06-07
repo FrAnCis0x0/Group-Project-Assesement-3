@@ -51,6 +51,8 @@ public class CustomerDetailsController implements Initializable {
         // delete customer from database
         dao.deleteCustomerById(selectedCustomer.getCustomerId());
         // go back to customer view
+        //message bok for confirmation
+        MessageBox.getInstance().showInfo("Customer deleted successfully.");
         goBack();
     }
 

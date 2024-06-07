@@ -101,11 +101,12 @@ public class Validate {
 			MessageBox.getInstance().showWarning("Staff name must only contain alphabet characters.");
 			return false;
 		}
-		//check if description is only letters and numbers and spaces and commas and .
-		if(!description.matches("^[a-zA-Z0-9 ,.]*$")) {
-			MessageBox.getInstance().showWarning("Description must only contain alphabet characters, numbers, spaces, commas and periods.");
+		//check if description is only letters and numbers and spaces and commas and also brackets
+		if(!description.matches("^[a-zA-Z0-9 ,()]*$")) {
+			MessageBox.getInstance().showWarning("Description must only contain alphabet characters, numbers, spaces, commas and brackets.");
 			return false;
 		}
+
 		//check if booking date is in the correct formats: yyyy-MM-dd, yyyy/MM/dd, yyyy.MM.dd, yyyy MM dd or dd-MM-yyyy, dd/MM/yyyy, dd.MM.yyyy, dd MM yyyy
 		if(!bookingDate.matches("^(\\d{4}[- /.](0[1-9]|1[0-2])[- /.](0[1-9]|[12][0-9]|3[01]))|(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[0-2])[- /.]\\d{4}$")) {
 			MessageBox.getInstance().showWarning("Invalid booking date. Date must be in the format yyyy-MM-dd, dd-MM-yyyy.");
